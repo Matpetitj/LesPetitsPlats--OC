@@ -1,5 +1,5 @@
 async function displayData(recipes) {
-    const recipesSection = document.querySelector("#wrapper");
+    const recipesSection = document.querySelector(".wrapper");
     recipesSection.innerHTML="";
     recipes.forEach((recipe) => {
         const recipeModel = recipeTemplate(recipe);

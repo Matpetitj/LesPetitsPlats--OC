@@ -9,18 +9,18 @@ function recipeTemplate(data) {
         card.classList.add("card");
         card.setAttribute("id", `${id}`);
 
-        // Entete de la carte
+        // En-tête de la carte
         let recipeHeader = document.createElement('div');
-        recipeHeader.classList.add('card__recipe-header');
+        recipeHeader.classList.add('card__recipeHeader');
         card.appendChild(recipeHeader);
 
         let duration = document.createElement('p');
-        duration.classList.add("card__recipe-header__duration");
+        duration.classList.add("card__recipeHeader__duration");
         duration.textContent = time + 'min';
         recipeHeader.appendChild(duration);
 
         let recipeImg = document.createElement("img");
-        recipeImg.classList.add("card__recipe-header__img")
+        recipeImg.classList.add("card__recipeHeader__img")
         recipeImg.setAttribute("alt", "Photo de la recette");
         recipeImg.setAttribute("src", `./assets/images/${image}`);
         recipeHeader.appendChild(recipeImg);
@@ -28,44 +28,44 @@ function recipeTemplate(data) {
         //INFOS
 
         let infoContainer = document.createElement('div');
-        infoContainer.classList.add('card__info-container');
+        infoContainer.classList.add('card__infoContainer');
         card.appendChild(infoContainer);
-        
+
         let recipeTitle = document.createElement('h3');
-        recipeTitle.classList.add('card__info-container__recipe-title');
+        recipeTitle.classList.add('card__infoContainer__recipeTitle');
         recipeTitle.textContent = name;
         infoContainer.appendChild(recipeTitle);
 
         let descriptionBlock = document.createElement('div');
-        descriptionBlock.classList.add('description-block');
+        descriptionBlock.classList.add('descriptionBlock');
         infoContainer.appendChild(descriptionBlock);
 
         let descriptionTitle = document.createElement('h4');
-        descriptionTitle.classList.add('description-block__title');
+        descriptionTitle.classList.add('descriptionBlock__title');
         descriptionTitle.textContent = "RECETTE";
         descriptionBlock.appendChild(descriptionTitle);
 
         let recipeDescription = document.createElement('p');
-        recipeDescription.classList.add('description-block__recipede-description');
+        recipeDescription.classList.add('descriptionBlock__recipeDescription');
         recipeDescription.textContent = description;
         descriptionBlock.appendChild(recipeDescription);
 
         let ingredientsBlock = document.createElement('div');
-        ingredientsBlock.classList.add('ingredients-block');
+        ingredientsBlock.classList.add('ingredientsBlock');
         infoContainer.appendChild(ingredientsBlock);
 
         let ingredientsTitle = document.createElement('h4');
-        ingredientsTitle.classList.add('ingredients-block__title');
+        ingredientsTitle.classList.add('ingredientsBlock__title');
         ingredientsTitle.textContent = "INGREDIENTS";
         ingredientsBlock.appendChild(ingredientsTitle);
 
         let ingredientsList = document.createElement('div');
-        ingredientsList.classList.add('ingredients-block__list');
+        ingredientsList.classList.add('ingredientsBlock__list');
         ingredientsBlock.appendChild(ingredientsList);
 
         ingredients.forEach(element => {
             let ingredientListUnit = document.createElement('div');
-            ingredientListUnit.classList.add('ingredient-list-unit');
+            ingredientListUnit.classList.add('ingredientListUnit');
             
             let ingredientName = document.createElement('h5');
             ingredientName.classList.add('ingredientName')

@@ -1,5 +1,240 @@
+@import "./utils/variables.scss";
+
 @import "./card.scss";
 
-header{
-    background-color: red;
+/* General style */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    max-width: 1440px;
+}
+
+main {
+    background-color: lightgray;
+}
+
+/* HEADER */
+
+.header {
+    width: 1440px;
+    height: 667px;
+    position: relative;
+    background-image: url(../../brgd-images/background.png);
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        width: auto;
+        padding-left: 70px;
+        padding-top: 50px;
+        text-decoration: none;
+
+        & div {
+            font-family: 'Anton', sans-serif;
+            font-size: 25px;
+            font-weight: 400;
+            color: $white;
+        }
+
+        & img {
+            height: 22px;
+            width: 22px;
+            margin-left: 5px;
+        }
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 890px;
+        margin: 170px auto 30px auto;
+        line-height: 66px;
+        font-family: 'Anton', sans-serif;
+        font-size: 44px;
+        font-weight: 400;
+        color: $secondary-color;
+        text-align: center;
+    }
+    
+    &__searchBar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin: auto;
+        width: 954px;
+        height: 72px;
+        border-radius: 11px;
+        background-color: $white;
+
+        &__mainInput {
+            padding-left: 35px;
+            border-radius: 11px;
+            width: 100%;
+            height: 72px;
+            font-size: 16px;
+            line-height: 21.86px;
+            font-weight: 400;
+            font-family: 'Manrope', sans-serif;
+            outline: none
+        }
+
+        &__btnErase {
+            cursor: pointer;
+            background-color: $white;
+            margin: 5px 20px 0 0;
+        }
+
+        &__btnLoupe {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 72px;
+            width: 72px;
+            border-radius: 11px;
+            background-color: $white;
+            margin-right: 4px;
+            cursor: pointer;
+            &__loupe {
+                background-color: #1B1B1B;
+                border-radius: 10px;
+                :hover {
+                    background-color: $secondary-color;
+                }
+            }
+        }
+    }
+}
+
+/* FILTRES */
+
+
+
+/* CARTES DES RECETTES */
+
+.wrapper {
+    margin: 19px 102px 0 102px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 66px 48px;
+    padding-bottom: 21px;
+}
+
+.card {
+    display: block;
+    width: 380px;
+    height: 730px;
+    background-color: #FFFFFF;
+    border-radius: 21px;
+
+    &__recipeHeader {
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 21px 21px 0 0;
+
+        &__duration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            margin: 21px 22px 0 0;
+            width: 33px;
+            height: 16px;
+            padding: 5px 15px 5px 15px;
+            border-radius: 14px;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            background-color: #FFD15B;
+            color: #1B1B1B;
+        }
+
+        &__img {
+            width: 100%;
+            height: 250px;
+            border-radius: 21px 21px 0 0;
+            object-fit: cover;
+        }
+    }
+
+    &__infoContainer {
+        padding: 32px 25px 0 25px;
+
+        &__recipeTitle {
+            height: 27px;
+            font-family: 'Anton', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+.descriptionBlock {
+    width: 330px;
+
+    &__title {
+        color: #7A7A7A;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+    }
+
+    &__recipeDescription {
+        color: #1B1B1B;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19.12px;
+        max-height: 115px;
+        overflow: auto;
+    }
+}
+
+.ingredientsBlock {
+    margin-top: 32px;
+    width: 330px;
+
+    &__title {
+        color: #7A7A7A;
+        font-family: 'Manrope', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 21px 30px;
+    }
+}
+
+.ingredientName {
+    color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19.12px;
+}
+
+.ingredientQuantity {
+    color: #7A7A7A;
+    font-family: 'Manrope';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19.12px;
 }

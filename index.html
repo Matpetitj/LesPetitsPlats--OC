@@ -10,19 +10,19 @@
     </head>
     <body>
         <header class="header">
-            <img id="header__main-background" src="./assets/brgd-images/background.png" alt="Bannière des Petits Plats">
-            <a href="./index.html" id="header__logo">
+            <!-- <img id="header__mainbBackground" src="./assets/brgd-images/background.png" alt="Bannière des Petits Plats"> -->
+            <a href="./index.html" class="header__logo">
                 <div>LES PETITS PLATS</div>
                 <img src="./assets/brgd-images/logo (1).svg" alt="Logo des Petits Plats">
             </a>
             <h2 class="header__title">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h2>
-            <form id="header__searchbar">
-                <input id="header__searchbar__main-input" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
-                <button id="header__searchbar__button-erase" type="button">
+            <form class="header__searchBar">
+                <input class="header__searchBar__mainInput" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button class="header__searchBar__btnErase" type="button">
                   <img src="./assets/brgd-images/croix.svg" alt="Effacer votre Recherche">
                 </button>
-                <button id="header__searchbar__button-loupe" type="submit">
-                  <svg id="header__searchbar__button-loupe__loupe" width="51" height="52" viewBox="0 0 51 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="header__searchBar__btnLoupe" type="submit">
+                  <svg class="header__searchBar__btnLoupe__loupe" width="51" height="52" viewBox="0 0 51 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="51" height="52" rx="10"/>
                     <circle cx="22" cy="22" r="9.5" stroke="white"/>
                     <line x1="30.3536" y1="30.6464" x2="39.3536" y2="39.6464" stroke="white"/>
@@ -30,87 +30,15 @@
                 </button>
               </form>
         </header>
-        <main id="main">
-            <div id="main__section-buttons">
-                <div id="main__section-buttons__all-buttons">
-                <!-- BOUTON FILTRE INGREDIENTS-->
-                  <div class="main__filter-button" role="menubar" tabindex="0">
-                    <div class="main__filter-button__filter-title">
-                      <div>Ingrédients</div>
-                      <i class="fa-sharp fa-solid fa-angle-down logo-menu-filter"></i>
-                    </div>
-                    <div class="menu-dropdown">
-                      <!-- SEARCH BAR -->
-                      <div class="menu-dropdown__filter-search-bar">
-                        <input id="ingredients-input" type="text" name="filter-1">
-                        <button id="search-filter-button1" type="button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="1"/>
-                            <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A" stroke-width="1"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <!-- INGREDIENTS SELECTIONNES -->
-                      <div id="menu-dropdown__selected-ingredients"></div>
-                      <!-- INGREDIENTS DISPOS -->
-                      <div id="menu-dropdown__all-items-ingredients"></div>
-                    </div>
-                  </div>
-                <!-- BOUTON FILTRE APPAREILS-->
-                  <div class="main__filter-button" role="menubar" tabindex="0">
-                    <div class="main__filter-buttonfilter-title">
-                      <div>Appareils</div>
-                      <i class="fa-sharp fa-solid fa-angle-down logo-menu-filter"></i>
-                    </div>
-                    <div class="menu-dropdown">
-                      <!-- SEARCH BAR -->
-                      <div class="menu-dropdown__filter-search-bar">
-                        <input id="appareils-input" type="text" name="filter-1">
-                        <button id="search-filter-button2" type="button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="1"/>
-                            <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A" stroke-width="1"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <!-- APPAREILS SELECTIONNES -->
-                      <div id="menu-dropdown__selected-appareils"></div>
-                      <!-- APPAREILS DISPOS -->
-                      <div id="menu-dropdown__all-items-appareils"></div>
-                    </div>
-                  </div>
-                <!-- BOUTON FILTRE USTENSILES-->
-                  <div class="main__filter-button" role="menubar" tabindex="0">
-                    <div class="main__filter-buttonfilter-title">
-                      <div>Ustensiles</div>
-                      <i class="fa-sharp fa-solid fa-angle-down logo-menu-filter"></i>
-                    </div>
-                    <div class="menu-dropdown">
-                      <!-- SEARCH BAR -->
-                      <div class="menu-dropdown__filter-search-bar">
-                        <input id="ustensils-input" type="text" name="filter-1">
-                        <button id="search-filter-button3" type="button">
-                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="5" cy="5" r="4.75" stroke="#7A7A7A" stroke-width="1"/>
-                            <line x1="9.17678" y1="9.32322" x2="13.6768" y2="13.8232" stroke="#7A7A7A" stroke-width="1"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <!-- USTENSILES SELECTIONNES -->
-                      <div id="menu-dropdown__selected-ustensils"></div>
-                      <!-- USTENSILES DISPOS -->
-                      <div id="menu-dropdown__all-items-ustensils"></div>
-                    </div>
-                  </div>
-                </div>
-                <div id="nb-recettes"></div>
-              </div>
-              <!-- SECTION DES FILTRES APPLIQUES -->
-              <div id="section-filters">
-                <div id="filters-selected"></div>
+        <main class="main">
+              <!-- FILTRES CONTAINER -->
+              <div class="filterContainer">
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
               <!-- SECTION DES RECETTES AFFICHEES -->
-              <div id="wrapper"></div>
+              <div class="wrapper"></div>
         </main>
         <script src="./data/recipes.js"></script>
         <script src="./scripts/templates/recipe.js"></script>
