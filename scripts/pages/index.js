@@ -40,9 +40,6 @@ function createTagIngredient(){
     dropdownList.appendChild(ingredientTxt);
     ingredientTxt.textContent = "INGREDIENTS";
 
-    // const selectedTag = document.createElement('div');
-    // selectedTag.classList.add('dropdown__selectedTag');
-
     // const tagList = document.createElement('div');
     // tagList.classList.add('dropdown__tagList');
 
