@@ -218,4 +218,8 @@ main {
   line-height: 19.12px;
 }
 
+.dropdownList {
+  display: none;
+}
+
 /*# sourceMappingURL=index.css.map */
