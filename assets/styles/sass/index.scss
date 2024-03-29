@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    background-color: lightgray;
+    background-color: #EDEDED;
 }
 
 /* HEADER */
@@ -40,7 +40,7 @@ main {
         text-decoration: none;
 
         & div {
-            font-family: 'Anton', sans-serif;
+            font-family: $anton;
             font-size: 25px;
             font-weight: 400;
             color: $white;
@@ -60,7 +60,7 @@ main {
         width: 890px;
         margin: 170px auto 30px auto;
         line-height: 66px;
-        font-family: 'Anton', sans-serif;
+        font-family: $anton;
         font-size: 44px;
         font-weight: 400;
         color: $secondary-color;
@@ -85,7 +85,7 @@ main {
             font-size: 16px;
             line-height: 21.86px;
             font-weight: 400;
-            font-family: 'Manrope', sans-serif;
+            font-family: $manrope;
             outline: none
         }
 
@@ -116,9 +116,75 @@ main {
     }
 }
 
-/* FILTRES */
+/* FILTRES et TAGS */
 
+.tagsSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 102px 50px 102px;
+    padding-top: 20px;
 
+    &__tagsContainer {
+        display: flex;
+        flex-direction: column;
+        background-color: $white;
+        border-radius: 10px;
+
+        &__tagBtn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            width: 180px;
+            
+            &__tagTitle {
+                font-family: $manrope;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__totalRecipe {
+        &__nbrTotalRecipe {
+            font-family: $anton;
+            font-weight: 400;
+            font-size: 21px;
+        }
+    }
+}
+
+.dropdownList {
+    display: none;
+    padding : 10px 15px;
+    background-color: $white;
+    border-radius: 10px;
+}
+
+.tagsForm {
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 2px;
+    position: relative;
+
+    &__searchBar {
+        height: 35px;
+        padding-left: 3px;
+        font-family: $manrope;
+        width: 98%;
+    }
+
+    &__tagsLoupeBtn {
+        color: rgb(185, 185, 185);
+        background-color: transparent;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        position: absolute;
+    }
+}
 
 /* CARTES DES RECETTES */
 
@@ -152,7 +218,7 @@ main {
             height: 16px;
             padding: 5px 15px 5px 15px;
             border-radius: 14px;
-            font-family: 'Manrope', sans-serif;
+            font-family: $manrope;
             font-weight: 400;
             font-size: 12px;
             background-color: #FFD15B;
@@ -172,7 +238,7 @@ main {
 
         &__recipeTitle {
             height: 27px;
-            font-family: 'Anton', sans-serif;
+            font-family: $anton;
             font-weight: 400;
             font-size: 18px;
             margin-bottom: 25px;
@@ -185,7 +251,7 @@ main {
 
     &__title {
         color: #7A7A7A;
-        font-family: 'Manrope', sans-serif;
+        font-family: $manrope;
         font-weight: 700;
         font-size: 12px;
         letter-spacing: 1.5px;
@@ -194,7 +260,7 @@ main {
 
     &__recipeDescription {
         color: #1B1B1B;
-        font-family: 'Manrope', sans-serif;
+        font-family: $manrope;
         font-weight: 400;
         font-size: 14px;
         line-height: 19.12px;
@@ -209,7 +275,7 @@ main {
 
     &__title {
         color: #7A7A7A;
-        font-family: 'Manrope', sans-serif;
+        font-family: $manrope;
         font-weight: 700;
         font-size: 12px;
         letter-spacing: 1.5px;
@@ -225,7 +291,7 @@ main {
 
 .ingredientName {
     color: #1B1B1B;
-    font-family: 'Manrope', sans-serif;
+    font-family: $manrope;
     font-weight: 500;
     font-size: 14px;
     line-height: 19.12px;
@@ -233,12 +299,8 @@ main {
 
 .ingredientQuantity {
     color: #7A7A7A;
-    font-family: 'Manrope';
+    font-family: $manrope;
     font-weight: 400;
     font-size: 14px;
     line-height: 19.12px;
-}
-
-.dropdownList {
-    display: none;
 }

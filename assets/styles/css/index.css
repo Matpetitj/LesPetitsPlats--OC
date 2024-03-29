@@ -21,7 +21,7 @@ body {
 }
 
 main {
-  background-color: lightgray;
+  background-color: #EDEDED;
 }
 
 /* HEADER */
@@ -108,7 +108,67 @@ main {
   background-color: #FFD15B;
 }
 
-/* FILTRES */
+/* FILTRES et TAGS */
+.tagsSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 102px 50px 102px;
+  padding-top: 20px;
+}
+.tagsSection__tagsContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+.tagsSection__tagsContainer__tagBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 14px 16px;
+  width: 180px;
+}
+.tagsSection__tagsContainer__tagBtn__tagTitle {
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.tagsSection__totalRecipe__nbrTotalRecipe {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.dropdownList {
+  display: none;
+  padding: 10px 15px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.tagsForm {
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 2px;
+  position: relative;
+}
+.tagsForm__searchBar {
+  height: 35px;
+  padding-left: 3px;
+  font-family: "Manrope", sans-serif;
+  width: 98%;
+}
+.tagsForm__tagsLoupeBtn {
+  color: rgb(185, 185, 185);
+  background-color: transparent;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  position: absolute;
+}
+
 /* CARTES DES RECETTES */
 .wrapper {
   margin: 19px 102px 0 102px;
@@ -212,14 +272,10 @@ main {
 
 .ingredientQuantity {
   color: #7A7A7A;
-  font-family: "Manrope";
+  font-family: "Manrope", sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 19.12px;
-}
-
-.dropdownList {
-  display: none;
 }
 
 /*# sourceMappingURL=index.css.map */

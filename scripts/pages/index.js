@@ -1,4 +1,17 @@
+// Tableaux des tags
+let allIngredients = [];
+let allAppliances = [];
+let allUstensils = [];
+
+let tagsIngredient = [];
+let tagsAppliance = [];
+let tagsUstensils = [];
+
 async function displayData(recipes) {
+    let allIngredients = [];
+    let allAppliances = [];
+    let allUstensils = [];
+    
     createTagIngredient();
     const recipesSection = document.querySelector(".wrapper");
     recipesSection.innerHTML="";
@@ -9,15 +22,23 @@ async function displayData(recipes) {
     });
 }
 
-function createTagIngredient(){
+async function init() {
+    // Récupère les datas des recipes
+    displayData(recipes);
+}
+
+function createTagIngredient(ingredients){
     
     const tagsSection = document.querySelector(".tagsSection");
 
+    const tagsContainer = document.createElement('div');
+    tagsContainer.classList.add('tagsSection__tagsContainer');
+
     const tagBtn = document.createElement('div');
-    tagBtn.classList.add("tagsContainer__tagBtn");
+    tagBtn.classList.add("tagsSection__tagsContainer__tagBtn");
 
     const tagTitle = document.createElement('h4');
-    tagTitle.classList.add("tagsContainer__tagBtn__tagTitle");
+    tagTitle.classList.add("tagsSection__tagsContainer__tagBtn__tagTitle");
     tagTitle.textContent = "Ingrédients";
 
     const icon = document.createElement('div');
@@ -30,33 +51,85 @@ function createTagIngredient(){
         event.preventDefault();
         const dropdownList = document.querySelector(".dropdownList");
         dropdownList.style.display = "block";
-    })
+        dropdownList.classList.add("open");
+    });
 
-    const dropdownList = document.createElement('div');
-    dropdownList.classList.add("dropdownList");
+    window.onclick = function(event){
+        const main = document.querySelector(".main");
+        const dropdownList = document.querySelector(".dropdownList");
+        if(event.target == main){
+            dropdownList.style.display = "none";
+            dropdownList.classList.remove("open");
+        }
+    }
 
-    const ingredientTxt = document.createElement('p');
-    ingredientTxt.classList.add('ingredientTxt');
-    dropdownList.appendChild(ingredientTxt);
-    ingredientTxt.textContent = "INGREDIENTS";
-
-    // const tagList = document.createElement('div');
-    // tagList.classList.add('dropdown__tagList');
-
-    tagsSection.appendChild(tagBtn);
+    tagsSection.appendChild(tagsContainer);
+    tagsContainer.appendChild(tagBtn);
     tagBtn.appendChild(tagTitle);
     tagBtn.appendChild(icon);
     icon.appendChild(arrowIcon);
 
-    tagsSection.appendChild(dropdownList);
-    // dropdownList.appendChild(selectedTag);
-    // dropdownList.appendChild(tagList);
+    // AJOUTER UNE CLASSE ET LA RETIRER POUR LE SMOOTH
+
+    const dropdownList = document.createElement('div');
+    dropdownList.classList.add("dropdownList");
+
+    // BARRE DE RECHERCHE DES TAGS
+
+    const tagsForm = document.createElement('form');
+    tagsForm.classList.add('tagsForm');
+
+    const searchBar = document.createElement('input');
+    searchBar.classList.add('tagsForm__searchBar');
+
+    const tagsLoupeBtn = document.createElement('button');
+    tagsLoupeBtn.classList.add('tagsForm__tagsLoupeBtn');
+
+    const tagsLoupe = document.createElement('i');
+    tagsLoupe.setAttribute("class", "tagsLoupe fa-solid fa-magnifying-glass");
+
+    tagsContainer.appendChild(dropdownList);
+    dropdownList.appendChild(tagsForm);
+    tagsForm.appendChild(searchBar);
+    tagsForm.appendChild(tagsLoupeBtn);
+    tagsLoupeBtn.appendChild(tagsLoupe);
+
+    // AFFICHAGE TAGS EN UTILISANT ENCORE DROPDOWNLIST
+
+    const tagsListContainer = document.createElement('div');
+    tagsListContainer.classList.add('tagsListContainer');
+    
+    const selectedTag = document.createElement('div');
+    selectedTag.classList.add('selectedTag');
+
+    const allTags = document.createElement('div');
+    allTags.classList.add('allTags');
+
+    dropdownList.appendChild(tagsListContainer);
+    tagsListContainer.appendChild(selectedTag);
+    tagsListContainer.appendChild(allTags);
+
+    // Nombre recette
+    const totalRecipe = document.createElement('div');
+    totalRecipe.classList.add("tagsSection__totalRecipe");
+
+    const nbrTotalRecipe = document.createElement('p');
+    nbrTotalRecipe.classList.add('tagsSection__totalRecipe__nbrTotalRecipe');
+    nbrTotalRecipe.textContent = "1500 recettes";
+    
+    tagsSection.appendChild(totalRecipe);
+    totalRecipe.appendChild(nbrTotalRecipe);
 
 }
 
-async function init() {
-    // Récupère les datas des recipes
-    displayData(recipes);
+function fillTags(dom, elements){
+    dom.innerHTML = "";
+    elements.forEach(element => {
+        if ((elements == allIngredients && !tagsIng.includes(element.toLowerCase()))) {
+
+        }
+    })
+
 }
 
 init();
