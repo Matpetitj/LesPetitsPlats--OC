@@ -127,24 +127,58 @@ main {
 
     &__tagsContainer {
         display: flex;
-        flex-direction: column;
-        background-color: $white;
-        border-radius: 10px;
+        flex-direction: row;
+        gap: 100px;
+        
 
         &__tagBtn {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
             background-color: $white;
             border-radius: 10px;
-            padding: 14px 16px;
+            padding: 15px;
             width: 180px;
+            background-color: $white;
             
-            &__tagTitle {
-                font-family: $manrope;
-                font-size: 16px;
-                font-weight: 500;
-            }
+        //     .firstBloc{
+        //         display: flex;
+        //         flex-direction: row;
+        //         justify-content: space-between;
+        //         align-items: center;
+            
+        //         .tagTitle {
+        //             font-family: $manrope;
+        //             font-size: 16px;
+        //             font-weight: 500;
+        //         }
+        //         .icon{}
+        // }
+        // .searchBar {
+        //     display: none;
+        //     position: relative;
+        //     .input{
+        //     height: 35px;
+        //     padding:0px 3px;
+        //     font-family: $manrope;
+        //     width: 98%;
+        //     }
+        //     .tagLoupe {
+        //         color: rgb(185, 185, 185);
+        //         background-color: transparent;
+        //         top: 10px;
+        //         right: 10px;
+        //         cursor: pointer;
+        //         position: absolute;
+        //     }
+        // }
+        .listTags{
+            display: none;
+            flex-direction: column;
+            gap:5px;
+            // .tag{
+
+            // }
+        }
         }
     }
 
@@ -154,35 +188,6 @@ main {
             font-weight: 400;
             font-size: 21px;
         }
-    }
-}
-
-.dropdownList {
-    display: none;
-    padding : 10px 15px;
-    background-color: $white;
-    border-radius: 10px;
-}
-
-.tagsForm {
-    border: 1px solid rgb(185, 185, 185);
-    border-radius: 2px;
-    position: relative;
-
-    &__searchBar {
-        height: 35px;
-        padding-left: 3px;
-        font-family: $manrope;
-        width: 98%;
-    }
-
-    &__tagsLoupeBtn {
-        color: rgb(185, 185, 185);
-        background-color: transparent;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        position: absolute;
     }
 }
 
