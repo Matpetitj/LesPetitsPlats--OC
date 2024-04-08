@@ -129,55 +129,72 @@ main {
         display: flex;
         flex-direction: row;
         gap: 100px;
-        
 
         &__tagBtn {
             display: flex;
             flex-direction: column;
-            background-color: $white;
             border-radius: 10px;
             padding: 15px;
             width: 180px;
-            background-color: $white;
             
-        //     .firstBloc{
-        //         display: flex;
-        //         flex-direction: row;
-        //         justify-content: space-between;
-        //         align-items: center;
+            .firstBloc{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                background-color: $white;
+                cursor: pointer;
             
-        //         .tagTitle {
-        //             font-family: $manrope;
-        //             font-size: 16px;
-        //             font-weight: 500;
-        //         }
-        //         .icon{}
-        // }
-        // .searchBar {
-        //     display: none;
-        //     position: relative;
-        //     .input{
-        //     height: 35px;
-        //     padding:0px 3px;
-        //     font-family: $manrope;
-        //     width: 98%;
-        //     }
-        //     .tagLoupe {
-        //         color: rgb(185, 185, 185);
-        //         background-color: transparent;
-        //         top: 10px;
-        //         right: 10px;
-        //         cursor: pointer;
-        //         position: absolute;
-        //     }
-        // }
-        .listTags{
+                .tagTitle {
+                    font-family: $manrope;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+                .icon{}
+            }
+
+        .dropdown__bloc{
             display: none;
             flex-direction: column;
-            gap:5px;
-            // .tag{
+            background-color: $white;
 
-            // }
+            // Style input list
+            .searchBarBloc {
+                display: flex;
+                margin-top: 12px;
+                position: relative;
+                .input {
+                    font-family: $manrope;
+                    padding-left: 5px;
+                    height: 35px;
+                    width: 100%;
+                    border-radius: 2px;
+                    border: 1px solid rgb(185, 185, 185);
+                }
+                .input:focus {
+                    border: 1px solid rgb(185, 185, 185);
+                }
+
+                .tagLoupe {
+                    color: rgb(185, 185, 185);
+                    background-color: transparent;
+                    top: 9px;
+                    right: 10px;
+                    cursor: pointer;
+                    position: absolute;
+                }
+            }
+
+            .tagsList{
+                flex-direction: column;
+                gap:8px;
+                margin-top: 15px;
+                .tag {
+                    font-family: $manrope;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
         }
         }
     }
@@ -189,6 +206,14 @@ main {
             font-size: 21px;
         }
     }
+}
+
+.opened {
+    display: flex;
+}
+
+.closed {
+    display: none;
 }
 
 /* CARTES DES RECETTES */
