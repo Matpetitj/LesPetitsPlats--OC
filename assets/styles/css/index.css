@@ -124,8 +124,6 @@ main {
 .tagsSection__tagsContainer__tagBtn {
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  padding: 15px;
   width: 180px;
 }
 .tagsSection__tagsContainer__tagBtn .firstBloc {
@@ -135,6 +133,8 @@ main {
   align-items: center;
   background-color: #FFFFFF;
   cursor: pointer;
+  border-radius: 10px;
+  padding: 15px;
 }
 .tagsSection__tagsContainer__tagBtn .firstBloc .tagTitle {
   font-family: "Manrope", sans-serif;
@@ -145,11 +145,14 @@ main {
   display: none;
   flex-direction: column;
   background-color: #FFFFFF;
+  padding-bottom: 15px;
+  border-radius: 0px 0px 10px 10px;
+  margin-top: -7px;
 }
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .searchBarBloc {
   display: flex;
-  margin-top: 12px;
   position: relative;
+  padding: 10px;
 }
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .searchBarBloc .input {
   font-family: "Manrope", sans-serif;
@@ -165,20 +168,30 @@ main {
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .searchBarBloc .tagLoupe {
   color: rgb(185, 185, 185);
   background-color: transparent;
-  top: 9px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
   position: absolute;
 }
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .tagsList {
+  display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 15px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .tagsList .tag {
+  display: flex;
+  align-items: center;
   font-family: "Manrope", sans-serif;
   font-size: 14px;
   font-weight: 400;
+  cursor: pointer;
+  padding: 8px 0 8px 10px;
+  height: 30px;
+}
+.tagsSection__tagsContainer__tagBtn .dropdown__bloc .tagsList .tag:hover {
+  background-color: #FFD15B;
 }
 .tagsSection__totalRecipe__nbrTotalRecipe {
   font-family: "Anton", sans-serif;
@@ -188,10 +201,6 @@ main {
 
 .opened {
   display: flex;
-}
-
-.closed {
-  display: none;
 }
 
 /* CARTES DES RECETTES */

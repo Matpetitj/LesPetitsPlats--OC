@@ -71,19 +71,27 @@ function createTags(alltags, title, id){
     tagBtn.appendChild(firstBloc);
 
     // Ouverture de la liste de tags
+
     firstBloc.addEventListener('click', () => {
         const allSecondBlocs= document.querySelectorAll(".dropdown__bloc");
         allSecondBlocs.forEach(element => {
             const tag = element.getAttribute("id");
-            console.log(tag);
             
-            if(tag == "secondBloc" + id){
-                document.getElementById("secondBloc" + id).style.display = "flex";
+            if(tag === "secondBloc" + id) {
+                if (element.classList.contains("opened")) {
+                    element.style.display = "none";
+                    element.classList.remove("opened");
+                } else {
+                    element.style.display = "flex";
+                    element.classList.add("opened");
+                }
+            } else {
+                element.style.display = "none";
+                element.classList.remove("opened");
             }
-            else element.style.display = "none";
         });
-    })
-    
+    });
+
     const tagTitle = document.createElement('h4');
     tagTitle.classList.add("tagTitle");
     tagTitle.textContent = title;
@@ -115,28 +123,84 @@ function createTags(alltags, title, id){
     tagLoupe.setAttribute("class", "tagLoupe fa-solid fa-magnifying-glass");
     searchBarBloc.appendChild(tagLoupe);
 
+    const selectedTagList = document.createElement('div');
+    selectedTagList.classList.add('selectedTagList');
+    secondBloc.appendChild(selectedTagList);
+
     // Création de la liste des tags dans le deuxième bloc
     const tagsList = document.createElement('div');
     tagsList.classList.add("tagsList");
     alltags.forEach(element => {
         const tag = document.createElement('div');
+        tag.dataset.tag = element;
         tag.textContent = element;
         tag.classList.add("tag");
         tagsList.appendChild(tag);
+        tag.addEventListener('click', () => {
+            switch (id) {
+                case "ing":
+                    tagsIngredient.push(element);
+                    const selectedTagIng = document.createElement('h4');
+                    selectedTagIng.classList.add('selectedTag');
+                    selectedTagIng.textContent = element;
+                    selectedTagIng.dataset.id = element;
+                    selectedTagList.appendChild(selectedTagIng);
+                    tag.style.display = "none";
+                    break;
+                case "appl":
+                    tagsAppliance.push(element);
+                    const selectedTagAppl = document.createElement('h4');
+                    selectedTagAppl.classList.add('selectedTag');
+                    selectedTagAppl.textContent = element;
+                    selectedTagAppl.dataset.id = element;
+                    selectedTagList.appendChild(selectedTagAppl);
+                    tag.style.display = "none";
+                    break;
+                case "unst":
+                    tagsUstensils.push(element);
+                    const selectedTagUnst = document.createElement('h4');
+                    selectedTagUnst.classList.add('selectedTag');
+                    selectedTagUnst.textContent = element;
+                    selectedTagUnst.dataset.id = element;
+                    selectedTagList.appendChild(selectedTagUnst);
+                    tag.style.display = "none";
+                    break;
+                default:
+                    break;
+            }
+        
+        updateSelectedTags();
+
+        })
+
+
     });
     
     secondBloc.appendChild(tagsList);
 
-    // window.onclick = function(event){
-    //         const main = document.querySelector(".main");
-    //         const tagsSection = document.querySelector(".tagsSection");
-    //         if(event.target == main || tagsSection){
-    //             secondBloc.style.display = "none";
-    //             listTags.style.display = "none";
-    //         }
-    //     }
-
     return tagBtn;
+}
+
+function updateSelectedTags() {
+    const divJauneContainer = document.querySelector('.divJauneContainer');
+    tagsIngredient.forEach(element => {
+        const divJaune = document.createElement('div');
+        divJauneContainer.appendChild(divJaune);
+        const divTagJaune = document.createElement('h4');
+        divJaune.appendChild(divTagJaune);
+        divTagJaune.textContent = element;
+        const closeIcon = document.createElement('i');
+        closeIcon.setAttribute('class', 'fa-solid fa-xmark');
+        divJaune.appendChild(closeIcon);
+        closeIcon.addEventListener('click', () => {
+            divJaune.remove();
+            document.querySelector(`[data-id="${element}"]`).remove();
+            document.querySelector(`[data-tag="${element}"]`).style.display = "block";
+        })
+    });
+
+    // boucler sur chacune des listes des tags
+    // créer l'étiquette jaune + croix fermer avec l'élément sélectionné
 }
 
 // Création du nombre de recette et calcul du nombre de recette 
