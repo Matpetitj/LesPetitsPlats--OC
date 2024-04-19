@@ -123,6 +123,7 @@ function createTags(alltags, title, id){
     tagLoupe.setAttribute("class", "tagLoupe fa-solid fa-magnifying-glass");
     searchBarBloc.appendChild(tagLoupe);
 
+    // Création du conteneur de la liste des tags sélectionnés
     const selectedTagList = document.createElement('div');
     selectedTagList.classList.add('selectedTagList');
     secondBloc.appendChild(selectedTagList);
@@ -130,6 +131,14 @@ function createTags(alltags, title, id){
     // Création de la liste des tags dans le deuxième bloc
     const tagsList = document.createElement('div');
     tagsList.classList.add("tagsList");
+
+    const tagContainerIng = document.querySelector('.tagContainerIng');
+    tagContainerIng.innerHTML = "";
+    const tagContainerApp = document.querySelector('.tagContainerApp');
+    tagContainerApp.innerHTML = "";
+    const tagContainerUst = document.querySelector('.tagContainerUst');
+    tagContainerUst.innerHTML = "";
+                    
     alltags.forEach(element => {
         const tag = document.createElement('div');
         tag.dataset.tag = element;
@@ -140,68 +149,142 @@ function createTags(alltags, title, id){
             switch (id) {
                 case "ing":
                     tagsIngredient.push(element);
-                    const selectedTagIng = document.createElement('h4');
-                    selectedTagIng.classList.add('selectedTag');
-                    selectedTagIng.textContent = element;
-                    selectedTagIng.dataset.id = element;
-                    selectedTagList.appendChild(selectedTagIng);
-                    tag.style.display = "none";
+                    updateListTags(element, selectedTagList, tag);
+                    updateContainerTags(element, tagContainerIng, tagsIngredient);
                     break;
                 case "appl":
                     tagsAppliance.push(element);
-                    const selectedTagAppl = document.createElement('h4');
-                    selectedTagAppl.classList.add('selectedTag');
-                    selectedTagAppl.textContent = element;
-                    selectedTagAppl.dataset.id = element;
-                    selectedTagList.appendChild(selectedTagAppl);
-                    tag.style.display = "none";
+                    updateListTags( element, selectedTagList, tag);
+                    updateContainerTags(element, tagContainerApp, tagsAppliance);
                     break;
                 case "unst":
                     tagsUstensils.push(element);
-                    const selectedTagUnst = document.createElement('h4');
-                    selectedTagUnst.classList.add('selectedTag');
-                    selectedTagUnst.textContent = element;
-                    selectedTagUnst.dataset.id = element;
-                    selectedTagList.appendChild(selectedTagUnst);
-                    tag.style.display = "none";
+                    updateListTags( element, selectedTagList, tag);
+                    updateContainerTags(element, tagContainerUst, tagsUstensils);
                     break;
                 default:
                     break;
             }
+
+            const selectedTag = document.querySelector('.selectedTag');
+            selectedTag.addEventListener('mouseover', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                selectedTagCloseIcon.style.display = "block";
+            })
+
+            // selectedTag.addEventListener('mouseout', (event) => {
+            //     event.preventDefault();
+            //     event.stopPropagation();
+            //     selectedTagCloseIcon.style.display = "none";
+            // })
         
-        updateSelectedTags();
+        
 
         })
 
 
     });
+
+    // créer une étiquette qui contient le h4 et la croix de fermeture
     
+    // Création de la croix dans le selectedTagList
+    const selectedTagCloseIcon = document.createElement('i');
+    selectedTagCloseIcon.setAttribute('class', 'fa-solid fa-xmark');
+    selectedTagCloseIcon.style.display = "none";
+
     secondBloc.appendChild(tagsList);
 
     return tagBtn;
 }
 
-function updateSelectedTags() {
-    const divJauneContainer = document.querySelector('.divJauneContainer');
-    tagsIngredient.forEach(element => {
-        const divJaune = document.createElement('div');
-        divJauneContainer.appendChild(divJaune);
-        const divTagJaune = document.createElement('h4');
-        divJaune.appendChild(divTagJaune);
-        divTagJaune.textContent = element;
+function updateListTags( element, container, tag) {
+        const selectedTagIng = document.createElement('h4');
+        selectedTagIng.classList.add('selectedTag');
+        selectedTagIng.textContent = element;
+        selectedTagIng.dataset.id = element;
+        container.appendChild(selectedTagIng);
+        tag.style.display = "none";
+}
+
+
+function updateContainerTags(element, container, tagsList){
+    const resultTagsList = document.createElement('div');
+        container.appendChild(resultTagsList);
+        resultTagsList.classList.add('resultTagsList')
+        const resultTag = document.createElement('h4');
+        resultTag.classList.add('resultTag')
+        resultTagsList.appendChild(resultTag);
+        resultTag.textContent = element;
         const closeIcon = document.createElement('i');
         closeIcon.setAttribute('class', 'fa-solid fa-xmark');
-        divJaune.appendChild(closeIcon);
+        resultTagsList.appendChild(closeIcon);
         closeIcon.addEventListener('click', () => {
-            divJaune.remove();
+            resultTagsList.remove();
             document.querySelector(`[data-id="${element}"]`).remove();
             document.querySelector(`[data-tag="${element}"]`).style.display = "block";
+            tagsList = tagsList.filter(elt => (elt != element));
         })
-    });
-
-    // boucler sur chacune des listes des tags
-    // créer l'étiquette jaune + croix fermer avec l'élément sélectionné
+   
 }
+
+function deleteTags(){
+    resultTagsList.remove();
+    document.querySelector(`[data-id="${element}"]`).remove();
+    document.querySelector(`[data-tag="${element}"]`).style.display = "block";
+    console.log(listTags);
+    listTags = listTags.filter(elt => (elt != element));
+    updateSelectedTags();
+}
+// function searchRecipes(query) {
+//     const searchResults = [];
+//     const recipesSection = document.querySelector(".wrapper");
+//     recipesSection.innerHTML = "";
+
+//     recipes.forEach(recipe => {
+//         // Vérifier si la chaîne de recherche est présente dans le titre ou la description
+//         if (recipe.title.toLowerCase().includes(query.toLowerCase()) || 
+//             recipe.description.toLowerCase().includes(query.toLowerCase())) {
+//             searchResults.push(recipe);
+//             return; // Passe à la recette suivante
+//         }
+
+//         // Vérifier si la chaîne de recherche est présente dans les ingrédients
+//         recipe.ingredients.forEach(ingredient => {
+//             if (ingredient.ingredient.toLowerCase().includes(query.toLowerCase())) {
+//                 searchResults.push(recipe);
+//                 return; // Passe à la recette suivante
+//             }
+//         });
+//     });
+
+//     // Afficher les résultats de la recherche
+//     searchResults.forEach(recipe => {
+//         const recipeModel = recipeTemplate(recipe);
+//         const carteRecipe = recipeModel.getRecipesCardDom();
+//         recipesSection.appendChild(carteRecipe);
+//     });
+// }
+
+// // Fonction pour gérer l'événement de saisie dans la zone de recherche
+// function handleSearchInput() {
+//     const searchInput = document.querySelector("#searchInput");
+//     const query = searchInput.value.trim(); // Récupérer la valeur saisie et enlever les espaces inutiles
+
+//     if (query.length > 0) {
+//         // Si la chaîne de recherche n'est pas vide, effectuer la recherche
+//         searchRecipes(query);
+//     } else {
+//         // Si la chaîne de recherche est vide, afficher toutes les recettes
+//         displayData(recipes);
+//     }
+// }
+
+// // Ajouter un écouteur d'événement pour déclencher la recherche lors de la saisie dans la zone de recherche
+// const searchInput = document.querySelector("#searchInput");
+// searchInput.addEventListener("input", handleSearchInput);
+
+
 
 // Création du nombre de recette et calcul du nombre de recette 
 

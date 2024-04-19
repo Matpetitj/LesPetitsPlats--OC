@@ -202,10 +202,23 @@ main {
                     font-weight: 400;
                     cursor: pointer;
                     padding: 8px 0 8px 10px;
-                    height: 30px;
                 }
                 .tag:hover {
                     background-color: $secondary-color;
+                }
+            }
+            .selectedTagList {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                background-color: $secondary-color;
+                padding-right: 10px;
+                .selectedTag {
+                    font-family: $manrope;
+                    font-size: 14px;
+                    font-weight: 400;
+                    width: 100%;
+                    padding: 6px 0 6px 10px;
                 }
             }
         }
@@ -223,6 +236,30 @@ main {
 
 .opened {
     display: flex;
+}
+
+/* Style des étiquttes de tag */
+
+.resultTagContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0px 102px 50px 102px;
+    .resultTagsList {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $secondary-color;
+        min-width: 140px;
+        height: 50px;
+        border-radius: 12px;
+        padding: 0px 15px;
+        .resultTag {
+            font-family: $manrope;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
 }
 
 /* CARTES DES RECETTES */

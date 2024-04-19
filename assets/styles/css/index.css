@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .card {
   width: 200px;
   height: 500px;
@@ -188,10 +189,23 @@ main {
   font-weight: 400;
   cursor: pointer;
   padding: 8px 0 8px 10px;
-  height: 30px;
 }
 .tagsSection__tagsContainer__tagBtn .dropdown__bloc .tagsList .tag:hover {
   background-color: #FFD15B;
+}
+.tagsSection__tagsContainer__tagBtn .dropdown__bloc .selectedTagList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #FFD15B;
+  padding-right: 10px;
+}
+.tagsSection__tagsContainer__tagBtn .dropdown__bloc .selectedTagList .selectedTag {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  width: 100%;
+  padding: 6px 0 6px 10px;
 }
 .tagsSection__totalRecipe__nbrTotalRecipe {
   font-family: "Anton", sans-serif;
@@ -201,6 +215,29 @@ main {
 
 .opened {
   display: flex;
+}
+
+/* Style des étiquttes de tag */
+.resultTagContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0px 102px 50px 102px;
+}
+.resultTagContainer .resultTagsList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFD15B;
+  min-width: 140px;
+  height: 50px;
+  border-radius: 12px;
+  padding: 0px 15px;
+}
+.resultTagContainer .resultTagsList .resultTag {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* CARTES DES RECETTES */
