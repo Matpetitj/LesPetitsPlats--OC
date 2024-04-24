@@ -12,12 +12,13 @@ async function displayData(recipes) {
    // traitement des données 
     const recipesSection = document.querySelector(".wrapper");
     recipesSection.innerHTML="";
+    // Boucle avec la méthode forEach pour les recettes
     recipes.forEach((recipe) => {
         const recipeModel = recipeTemplate(recipe);
         const carteRecipe = recipeModel.getRecipesCardDom();
         recipesSection.appendChild(carteRecipe);
 
-        //Remplir les tableaux allIng allappliance et allUnst
+        //Remplir les tableaux allIng allAppl et allUnst
         recipe.ingredients.forEach(element => {
             allIngredients.push(element.ingredient);
         });
@@ -29,13 +30,20 @@ async function displayData(recipes) {
                
     });
 
-    // Eliminer les doublons 
+    // Eliminer les doublons avec la méthode Set
     allIngredients = new Set(allIngredients);
     allUstensils = new Set(allUstensils);
     allAppliances = new Set(allAppliances);
     console.log(allIngredients);
     console.log(allUstensils);
     console.log(allAppliances);
+
+    // Appel de la fonction pour gérer la recherche
+    inputsListener();
+
+    // Création du nombre de recette et calcul du nombre de recette 
+
+    updateSumRecipe(recipes.length);
 
     // Agir sur le dom 
     createAllTags(allIngredients,allUstensils, allAppliances);
@@ -48,7 +56,8 @@ async function init() {
 
 function createAllTags(allIngredients,allUstensils, allAppliances){
     const tagsSection = document.querySelector(".tagsSection__tagsContainer");
-    // Procéder à la création des 3 list all tags 
+    tagsSection.innerHTML = "";
+    // Procéder à la création des 3 list all tags + titre et id
     const tagAllIng = createTags(allIngredients, "Ingrédients", "ing");
     tagsSection.appendChild(tagAllIng);
 
@@ -71,7 +80,6 @@ function createTags(alltags, title, id){
     tagBtn.appendChild(firstBloc);
 
     // Ouverture de la liste de tags
-
     firstBloc.addEventListener('click', () => {
         const allSecondBlocs= document.querySelectorAll(".dropdown__bloc");
         allSecondBlocs.forEach(element => {
@@ -118,6 +126,12 @@ function createTags(alltags, title, id){
     secondBloc.appendChild(searchBarBloc)
     const searchBar = document.createElement('input');
     searchBar.classList.add('input');
+
+    searchBar.addEventListener('input', function (){
+        // faire un parcours sur les tags avec la classList tag puis les cacher dans la liste de tags
+        // seulement pendant la recherche, quand un tags est selectionné -> remettre l'affichage
+    })
+
     searchBarBloc.appendChild(searchBar);
     const tagLoupe = document.createElement('i');
     tagLoupe.setAttribute("class", "tagLoupe fa-solid fa-magnifying-glass");
@@ -132,20 +146,28 @@ function createTags(alltags, title, id){
     const tagsList = document.createElement('div');
     tagsList.classList.add("tagsList");
 
-    const tagContainerIng = document.querySelector('.tagContainerIng');
+    // Récupération des container des listes de tags et nettoyage
+    const tagContainerIng = document.getElementById('tagContainerIng');
     tagContainerIng.innerHTML = "";
-    const tagContainerApp = document.querySelector('.tagContainerApp');
+    const tagContainerApp = document.getElementById('tagContainerApp');
     tagContainerApp.innerHTML = "";
-    const tagContainerUst = document.querySelector('.tagContainerUst');
+    const tagContainerUst = document.getElementById('tagContainerUst');
     tagContainerUst.innerHTML = "";
-                    
+
+    // ----------------- //
+    // CREATION DES TAGS + MISE A JOUR DES TAGS APRES LA PARTIE GESTION
+
+    // Boucle forEach afin de créer les tags                
     alltags.forEach(element => {
-        const tag = document.createElement('div');
+        // création des tags
+        const tag = document.createElement('p');
         tag.dataset.tag = element;
         tag.textContent = element;
         tag.classList.add("tag");
         tagsList.appendChild(tag);
+        // listener click sur les tags afin de gérer les tags sélectionné
         tag.addEventListener('click', () => {
+            // en fonction de l'id, on push les modifications dans une nouvelles liste (array)
             switch (id) {
                 case "ing":
                     tagsIngredient.push(element);
@@ -166,48 +188,60 @@ function createTags(alltags, title, id){
                     break;
             }
 
-            const selectedTag = document.querySelector('.selectedTag');
-            selectedTag.addEventListener('mouseover', (event) => {
+            // affichage de la croix sur les tags avec un mouseover
+            const selectedTagContainer = document.querySelector('.selectedTag');
+            const selectedTagCloseIcon = document.querySelector('.selectedTagCloseIcon');
+            selectedTagContainer.addEventListener('mouseover', (event) => {
                 event.preventDefault();
                 event.stopPropagation();
                 selectedTagCloseIcon.style.display = "block";
             })
 
-            // selectedTag.addEventListener('mouseout', (event) => {
-            //     event.preventDefault();
-            //     event.stopPropagation();
-            //     selectedTagCloseIcon.style.display = "none";
-            // })
-        
-        
+            selectedTagCloseIcon.addEventListener('mouseover', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                selectedTagCloseIcon.style.display = "block";
+            })
 
+            //suppression de la croix sur les tags avec un mouseover
+            selectedTagContainer.addEventListener('mouseout', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                selectedTagCloseIcon.style.display = "none";
+            })
+        
         })
 
-
     });
-
-    // créer une étiquette qui contient le h4 et la croix de fermeture
-    
-    // Création de la croix dans le selectedTagList
-    const selectedTagCloseIcon = document.createElement('i');
-    selectedTagCloseIcon.setAttribute('class', 'fa-solid fa-xmark');
-    selectedTagCloseIcon.style.display = "none";
 
     secondBloc.appendChild(tagsList);
 
     return tagBtn;
 }
 
+// ----------------- //
+// GESTION DES TAGS
+
+// Fonction création et mise à jour des tags sélectionnés directement dans la liste concernée
 function updateListTags( element, container, tag) {
+        const selectedTagContainer = document.createElement('div');
+        selectedTagContainer.classList.add('selectedTagContainer');
+        // création du tag sélectionné dans la liste
         const selectedTagIng = document.createElement('h4');
         selectedTagIng.classList.add('selectedTag');
         selectedTagIng.textContent = element;
         selectedTagIng.dataset.id = element;
-        container.appendChild(selectedTagIng);
+        selectedTagContainer.appendChild(selectedTagIng);
+        // Création de la croix dans le selectedTagList
+        const selectedTagCloseIcon = document.createElement('i');
+        selectedTagCloseIcon.setAttribute('class', 'fa-solid fa-xmark selectedTagCloseIcon');
+        // selectedTagCloseIcon.style.display = "none";
+        selectedTagContainer.appendChild(selectedTagCloseIcon);
+        container.appendChild(selectedTagContainer);
         tag.style.display = "none";
 }
 
-
+// Création de la fonction de mise à jour des tags dans les étiquettes
 function updateContainerTags(element, container, tagsList){
     const resultTagsList = document.createElement('div');
         container.appendChild(resultTagsList);
@@ -219,15 +253,20 @@ function updateContainerTags(element, container, tagsList){
         const closeIcon = document.createElement('i');
         closeIcon.setAttribute('class', 'fa-solid fa-xmark');
         resultTagsList.appendChild(closeIcon);
+        // Remove + style de l'étiquette supprimée
         closeIcon.addEventListener('click', () => {
+            // remove l'étiquette du DOM
             resultTagsList.remove();
+            // remove l'element du DOM
             document.querySelector(`[data-id="${element}"]`).remove();
             document.querySelector(`[data-tag="${element}"]`).style.display = "block";
+            // la valeur element est filtrée ( retirée ) de tagsList
             tagsList = tagsList.filter(elt => (elt != element));
         })
    
 }
 
+// Création de la function de suppression des tags sélectionnés
 function deleteTags(){
     resultTagsList.remove();
     document.querySelector(`[data-id="${element}"]`).remove();
@@ -236,62 +275,54 @@ function deleteTags(){
     listTags = listTags.filter(elt => (elt != element));
     updateSelectedTags();
 }
-// function searchRecipes(query) {
-//     const searchResults = [];
-//     const recipesSection = document.querySelector(".wrapper");
-//     recipesSection.innerHTML = "";
 
-//     recipes.forEach(recipe => {
-//         // Vérifier si la chaîne de recherche est présente dans le titre ou la description
-//         if (recipe.title.toLowerCase().includes(query.toLowerCase()) || 
-//             recipe.description.toLowerCase().includes(query.toLowerCase())) {
-//             searchResults.push(recipe);
-//             return; // Passe à la recette suivante
-//         }
+// ----------------- //
+// Recherche INPUT
 
-//         // Vérifier si la chaîne de recherche est présente dans les ingrédients
-//         recipe.ingredients.forEach(ingredient => {
-//             if (ingredient.ingredient.toLowerCase().includes(query.toLowerCase())) {
-//                 searchResults.push(recipe);
-//                 return; // Passe à la recette suivante
-//             }
-//         });
-//     });
+// Fonction pour gérer la recherche des tags
 
-//     // Afficher les résultats de la recherche
-//     searchResults.forEach(recipe => {
-//         const recipeModel = recipeTemplate(recipe);
-//         const carteRecipe = recipeModel.getRecipesCardDom();
-//         recipesSection.appendChild(carteRecipe);
-//     });
-// }
+function inputsListener(){
+    document.getElementById('mainSearchBar').addEventListener('input', function (e) {
+        e.preventDefault();
+        let inputValue = this.value;
+        if (inputValue.length > 0) {
+          document.getElementById('delete').style.display = 'block';
+        } 
+        if (inputValue.length >= 3) {
+          let filtredTable = sampleSearch(inputValue);
+          displayData(filtredTable);
+            
+        }
+    });
+}
 
-// // Fonction pour gérer l'événement de saisie dans la zone de recherche
-// function handleSearchInput() {
-//     const searchInput = document.querySelector("#searchInput");
-//     const query = searchInput.value.trim(); // Récupérer la valeur saisie et enlever les espaces inutiles
+function sampleSearch(searchString){
+    // Convertir la chaîne de recherche en minuscules pour la comparaison
+    const searchLowerCase = searchString.toLowerCase();
+    // Filtrer les recettes en fonction de la chaîne de recherche
+    const filteredRecipes = recipes.filter(recipe => {
+      // Vérifier si la c haîne de recherche est présente dans le titre, la description ou la liste des ingrédients
+      return (
+        recipe.name.toLowerCase().includes(searchLowerCase) ||
+        recipe.description.toLowerCase().includes(searchLowerCase) ||
+        recipe.ingredients.some(
+          ingredient =>
+            ingredient.ingredient.toLowerCase().includes(searchLowerCase)
+        ) )
+    });
+    return filteredRecipes;
+}
 
-//     if (query.length > 0) {
-//         // Si la chaîne de recherche n'est pas vide, effectuer la recherche
-//         searchRecipes(query);
-//     } else {
-//         // Si la chaîne de recherche est vide, afficher toutes les recettes
-//         displayData(recipes);
-//     }
-// }
+function advancedSearch (){
+    // une recherche supplémentaire ( plus précise ) qui complète la recherche de la searchBar principale
+}
 
-// // Ajouter un écouteur d'événement pour déclencher la recherche lors de la saisie dans la zone de recherche
-// const searchInput = document.querySelector("#searchInput");
-// searchInput.addEventListener("input", handleSearchInput);
-
-
-
+// ----------------- //
 // Création du nombre de recette et calcul du nombre de recette 
 
-// function updateSumRecipe(sum) {
-//     const sumRecipe = document.querySelector('.tagsSection__totalRecipe__nbrTotalRecipe');
-//     sumRecipe.textContent = `${sum} recette${sum !== 1 ? 's' : ''}`;
-// }
-
+function updateSumRecipe(sum) {
+    const sumRecipe = document.querySelector('.tagsSection__totalRecipe__nbrTotalRecipe');
+    sumRecipe.textContent = `${sum} recette${sum !== 1 ? 's' : ''}`;
+}
 
 init();

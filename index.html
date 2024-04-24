@@ -18,8 +18,8 @@
             </a>
             <h2 class="header__title">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h2>
             <form class="header__searchBar">
-                <input class="header__searchBar__mainInput" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
-                <button class="header__searchBar__btnErase" type="button">
+                <input class="header__searchBar__mainInput" id="mainSearchBar" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button class="header__searchBar__btnErase" id="delete" type="button">
                   <img src="./assets/brgd-images/croix.svg" alt="Effacer votre Recherche">
                 </button>
                 <button class="header__searchBar__btnLoupe" type="submit">
@@ -40,9 +40,9 @@
                 </div>
               </div>
               <div class="resultTagContainer">
-                <div class="tagContainerIng"></div>
-                <div class="tagContainerUst"></div>
-                <div class="tagContainerApp"></div>
+                <div id="tagContainerIng" class="tagContainer"></div>
+                <div id="tagContainerUst" class="tagContainer"></div>
+                <div id="tagContainerApp" class="tagContainer"></div>
               </div>
               <!-- SECTION DES RECETTES AFFICHEES -->
               <div class="wrapper"></div>

@@ -95,6 +95,10 @@ main {
             margin: 5px 20px 0 0;
         }
 
+        #delete {
+            display: none;
+        }
+
         &__btnLoupe {
             display: flex;
             justify-content: center;
@@ -150,8 +154,14 @@ main {
                     font-size: 16px;
                     font-weight: 500;
                 }
-                .icon{}
+                .icon:hover{
+                    rotate: 180deg;
+                    transition-duration: 0.2s;
+                }
             }
+            // .firstBloc:active > .icon {
+            //     rotate: 180deg;
+            // }
 
         .dropdown__bloc{
             display: none;
@@ -213,12 +223,31 @@ main {
                 flex-direction: column;
                 background-color: $secondary-color;
                 padding-right: 10px;
-                .selectedTag {
-                    font-family: $manrope;
-                    font-size: 14px;
-                    font-weight: 400;
+                .selectedTagContainer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     width: 100%;
-                    padding: 6px 0 6px 10px;
+                    .selectedTag {
+                        font-family: $manrope;
+                        font-size: 14px;
+                        font-weight: 400;
+                        width: 100%;
+                        padding: 8px 0 8px 10px;
+                    }
+                    .selectedTagCloseIcon {
+                        margin-right: 10px;
+                        font-size: 12px;
+                        padding: 3.5px 5px;
+                        display: none;
+                        cursor: pointer;
+                    }
+                    .selectedTagCloseIcon:hover {
+                        background-color: #000000;
+                        border-radius: 100%;
+                        color: $secondary-color;
+                    }
+                    
                 }
             }
         }
@@ -245,21 +274,29 @@ main {
     gap: 10px;
     align-items: center;
     margin: 0px 102px 50px 102px;
-    .resultTagsList {
+    .tagContainer {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: $secondary-color;
-        min-width: 140px;
-        height: 50px;
-        border-radius: 12px;
-        padding: 0px 15px;
-        .resultTag {
-            font-family: $manrope;
-            font-size: 14px;
-            font-weight: 400;
+        gap: 10px;
+        .resultTagsList {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: $secondary-color;
+            min-width: 140px;
+            height: 50px;
+            border-radius: 12px;
+            padding: 0px 15px;
+            .resultTag {
+                font-family: $manrope;
+                font-size: 14px;
+                font-weight: 400;
+            }
+            i {
+                cursor: pointer;
+            }
         }
     }
+    
 }
 
 /* CARTES DES RECETTES */
