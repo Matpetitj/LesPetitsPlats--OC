@@ -20,13 +20,13 @@ async function displayData(recipes) {
 
         //Remplir les tableaux allIng allAppl et allUnst
         recipe.ingredients.forEach(element => {
-            allIngredients.push(element.ingredient);
+            allIngredients.push(element.ingredient.toLowerCase());
         });
         
         recipe.ustensils.forEach(element => {
-            allUstensils.push(element);
+            allUstensils.push(element.toLowerCase());
         });
-        allAppliances.push(recipe.appliance);
+        allAppliances.push(recipe.appliance.toLowerCase());
                
     });
 
@@ -34,15 +34,14 @@ async function displayData(recipes) {
     allIngredients = new Set(allIngredients);
     allUstensils = new Set(allUstensils);
     allAppliances = new Set(allAppliances);
-    console.log(allIngredients);
-    console.log(allUstensils);
-    console.log(allAppliances);
+    // console.log(allIngredients);
+    // console.log(allUstensils);
+    // console.log(allAppliances);
 
     // Appel de la fonction pour gérer la recherche
     inputsListener();
 
     // Création du nombre de recette et calcul du nombre de recette 
-
     updateSumRecipe(recipes.length);
 
     // Agir sur le dom 
@@ -127,10 +126,21 @@ function createTags(alltags, title, id){
     const searchBar = document.createElement('input');
     searchBar.classList.add('input');
 
-    searchBar.addEventListener('input', function (){
-        // faire un parcours sur les tags avec la classList tag puis les cacher dans la liste de tags
-        // seulement pendant la recherche, quand un tags est selectionné -> remettre l'affichage
-    })
+    // Ajout de l'event listener sur l'input de recherche
+    searchBar.addEventListener('input', function() {
+        const inputValue = this.value.toLowerCase(); // Convertir en minuscules pour la comparaison
+        const tags = tagsList.querySelectorAll('.tag'); // Récupérer tous les tags
+
+        // Boucle à travers chaque tag pour le cacher ou l'afficher en fonction de la saisie
+        tags.forEach(tag => {
+            const tagName = tag.textContent; // Le nom du tag
+            if (tagName.includes(inputValue)) {
+                tag.style.display = 'block'; // Afficher le tag si son nom correspond à la saisie
+            } else {
+                tag.style.display = 'none'; // Cacher le tag sinon
+            }
+        });
+    });
 
     searchBarBloc.appendChild(searchBar);
     const tagLoupe = document.createElement('i');
@@ -173,16 +183,22 @@ function createTags(alltags, title, id){
                     tagsIngredient.push(element);
                     updateListTags(element, selectedTagList, tag);
                     updateContainerTags(element, tagContainerIng, tagsIngredient);
+                    searchBar.value = "";
+                    updateSelectedTags(tagsIngredient);
                     break;
                 case "appl":
                     tagsAppliance.push(element);
                     updateListTags( element, selectedTagList, tag);
                     updateContainerTags(element, tagContainerApp, tagsAppliance);
+                    searchBar.value = "";
+                    updateSelectedTags(tagsAppliance);
                     break;
                 case "unst":
                     tagsUstensils.push(element);
                     updateListTags( element, selectedTagList, tag);
                     updateContainerTags(element, tagContainerUst, tagsUstensils);
+                    searchBar.value = "";
+                    updateSelectedTags(tagsUstensils);
                     break;
                 default:
                     break;
@@ -262,6 +278,7 @@ function updateContainerTags(element, container, tagsList){
             document.querySelector(`[data-tag="${element}"]`).style.display = "block";
             // la valeur element est filtrée ( retirée ) de tagsList
             tagsList = tagsList.filter(elt => (elt != element));
+            updateSelectedTags(tagsList);
         })
    
 }
@@ -273,7 +290,20 @@ function deleteTags(){
     document.querySelector(`[data-tag="${element}"]`).style.display = "block";
     console.log(listTags);
     listTags = listTags.filter(elt => (elt != element));
-    updateSelectedTags();
+    updateSelectedTags(listTags);
+}
+
+function updateSelectedTags(tagsList){
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(element => {
+        // console.log(element);
+        if(tagsList.includes(element.dataset.tag)){
+            element.style.display = 'none';
+        } else {
+            element.style.display = 'block';
+        }
+        console.log(tagsList.includes(element.dataset.tag));
+    });
 }
 
 // ----------------- //
@@ -291,7 +321,6 @@ function inputsListener(){
         if (inputValue.length >= 3) {
           let filtredTable = sampleSearch(inputValue);
           displayData(filtredTable);
-            
         }
     });
 }
@@ -314,6 +343,10 @@ function sampleSearch(searchString){
 }
 
 function advancedSearch (){
+    
+    const filtredRecipes = recipes.filter(recipe => {
+
+    })
     // une recherche supplémentaire ( plus précise ) qui complète la recherche de la searchBar principale
 }
 
