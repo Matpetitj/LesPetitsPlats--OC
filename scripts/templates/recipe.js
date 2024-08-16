@@ -74,7 +74,7 @@ function recipeTemplate(data) {
 
             let ingredientQuantity = document.createElement('p');
             ingredientQuantity.classList.add('ingredientQuantity');
-            ingredientQuantity.textContent = element.quantity + " " + element.unit;
+            ingredientQuantity.textContent = element.quantity+element.unit;
             ingredientListUnit.appendChild(ingredientQuantity);
             
             ingredientsList.appendChild(ingredientListUnit);
@@ -85,6 +85,6 @@ function recipeTemplate(data) {
         return card;
     }
 
-    return { getRecipesCardDom, appliance, ustensils, ingredients, servings };
+    return { getRecipesCardDom };
 }
 

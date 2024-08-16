@@ -1,56 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./assets/styles/css/index.css" rel="stylesheet" >
-        <script src="https://kit.fontawesome.com/75b27a2f9b.js" crossorigin="anonymous"></script>
-        <style>@import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap');</style>
-        <title>Les Petits Plats</title>
-    </head>
-    <body>
-        <header class="header">
-            <!-- <img id="header__mainbBackground" src="./assets/brgd-images/background.png" alt="Bannière des Petits Plats"> -->
-            <a href="./index.html" class="header__logo">
-                <div>LES PETITS PLATS</div>
-                <img src="./assets/brgd-images/logo (1).svg" alt="Logo des Petits Plats">
-            </a>
-            <h2 class="header__title">CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h2>
-            <form class="header__searchBar">
-                <input class="header__searchBar__mainInput" id="mainSearchBar" type="text" name="search" placeholder="Rechercher une recette, un ingrédient, ...">
-                <button class="header__searchBar__btnErase" id="delete" type="button">
-                  <img src="./assets/brgd-images/croix.svg" alt="Effacer votre Recherche">
-                </button>
-                <button class="header__searchBar__btnLoupe" type="submit">
-                  <svg class="header__searchBar__btnLoupe__loupe" width="51" height="52" viewBox="0 0 51 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="51" height="52" rx="10"/>
-                    <circle cx="22" cy="22" r="9.5" stroke="white"/>
-                    <line x1="30.3536" y1="30.6464" x2="39.3536" y2="39.6464" stroke="white"/>
-                  </svg>
-                </button>
-              </form>
-        </header>
-        <main class="main">
-              <!-- FILTRES CONTAINER -->
-              <div class="tagsSection">
-                <div class="tagsSection__tagsContainer"></div>
-                <div class="tagsSection__totalRecipe">
-                  <p class="tagsSection__totalRecipe__nbrTotalRecipe"></p>
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./styles/css/index.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/75b27a2f9b.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet" />
+
+  <title>Les Petits Plats</title>
+</head>
+
+<body>
+  <header>
+    <img src="./assets/brgd-images/background.png" alt="Image bannière arrière-plan" />
+    <a href="./index.html" class="logo">
+      <h1>LES PETITS PLATS</h1>
+      <img src="./assets/brgd-images/logo (1).svg" alt="Logo des Petits Plats" />
+    </a>
+    <div class="titleSearchContainer">
+      <h2 class="title">
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES<br />DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+      </h2>
+      <div class="search">
+        <input class="globalSearch" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+        <button class="loupe" type="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <!-- FILTRES CONTAINER -->
+    <section class="sectionTags">
+      <div class="tags">
+        <!-- LISTE GLOBALE DES TAGS -->
+        <div class="listTags">
+          <div class="tagsContainer">
+            <div class="tagsTitleContainer">
+              <h3 class="tagsTitle">Ingrédients</h3>
+              <i class="arrowIcon fa-sharp fa-solid fa-angle-down"></i>
+            </div>
+            <input class="inputIng" type="text">
+            <div class="ingredientsTags">
+              <div class="selectedIngTags">
               </div>
-              <div class="resultTagContainer">
-                <div id="tagContainerIng" class="tagContainer"></div>
-                <div id="tagContainerUst" class="tagContainer"></div>
-                <div id="tagContainerApp" class="tagContainer"></div>
+              <div class="listIngredientsTags">
               </div>
-              <!-- SECTION DES RECETTES AFFICHEES -->
-              <div class="wrapper"></div>
-        </main>
-        <script src="./data/recipes.js"></script>
-        <script src="./scripts/templates/recipe.js"></script>
-        <script src="./scripts/composants/updateTagsList.js"></script>
-        <script src="./scripts/composants/searchFeature.js"></script>
-        <script src="./scripts/pages/index.js"></script>
-    </body>
+            </div>
+          </div>
+
+          <div class="tagsContainer">
+            <div class="tagsTitleContainer">
+              <h3 class="tagsTitle">Appareils</h3>
+              <i class="arrowIcon fa-sharp fa-solid fa-angle-down"></i>
+            </div>
+            <input class="inputApp" type="text">
+            <div class="applianceTags">
+              <div class="selectedAppTags">
+              </div>
+              <div class="listApplianceTags">
+              </div>
+            </div>
+          </div>
+
+          <div class="tagsContainer">
+            <div class="tagsTitleContainer">
+              <h3 class="tagsTitle">Ustensiles</h3>
+              <i class="arrowIcon fa-sharp fa-solid fa-angle-down"></i>
+            </div>
+            <input class="inputUst" type="text">
+            <div class="ustensilsTags">
+              <div class="selectedUstTags">
+              </div>
+              <div class="listUstensilsTags">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- LIST SELECTIONNEE DES TAGS -->
+        <div class="selectedTags">
+          <div class="selectedIngredientsTags">
+          </div>
+          <div class="selectedUstensilsTags">
+          </div>
+          <div class="selectedApplianceTags">
+          </div>
+        </div>
+      </div>
+      <div class="total">
+        <h3 class="totalRecipes"></h3>
+      </div>
+    </section>
+    <!-- SECTION DES RECETTES AFFICHEES -->
+    <section class="resultRecipes"></section>
+  </main>
+  <script src="./data/recipes.js"></script>
+  <script src="./scripts/templates/recipe.js"></script>
+  <script src="./scripts/pages/tags.js"></script>
+  <script src="./scripts/pages/index.js"></script>
+  <script src="./scripts/pages/rechercheRecipes.js"></script>
+  <script src="./scripts/pages/globalSearch.js"></script>
+</body>
+
 </html>

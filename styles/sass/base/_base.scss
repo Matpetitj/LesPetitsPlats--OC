@@ -1,0 +1,27 @@
+* {
+    font-family: 'Manrope', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+html {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    max-width: 1440px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+h1,h2,h3,h4,p{
+    margin: 0px;
+}

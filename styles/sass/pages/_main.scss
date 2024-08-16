@@ -1,0 +1,174 @@
+.main{
+    background-color: #EDEDED;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 5em;
+  .sectionTags{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 30px 40px 0px 40px;
+    .tags{
+        .listTags{
+          display: flex;
+          flex-direction: row;
+          gap: 100px;
+          .tagsContainer {
+            width: 180px;
+            padding: 20px 20px 20px 20px;
+            background-color: $white;
+            border-radius: 20px;
+            .tagsTitleContainer {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 10px;
+              .tagsTitle {
+                font-size: 16px;
+                font-weight: 500;
+              }
+            }
+            .ingredientsTags {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              margin-top: 10px;
+              max-height: 200px;
+              overflow-y: scroll;
+              .selectedIngTags{
+                display: flex;
+                flex-direction: column;
+                .yellowTicketE{
+                  padding: 5px 10px;
+                  @include yellowTicket;
+                }
+              }
+            }
+            .ustensilsTags {
+              display: flex;
+              flex-direction: column;
+              margin-top: 10px;
+              max-height: 200px;
+              overflow-y: scroll;
+              .selectedUstTags{
+                display: flex;
+                flex-direction: column;
+                .yellowTicketE{
+                  padding: 5px 10px;
+                  @include yellowTicket;
+                }
+              }
+            }
+            .applianceTags {
+              display: flex;
+              flex-direction: column;
+              margin-top: 10px;
+              max-height: 200px;
+              overflow-y: scroll;
+              .selectedAppTags{
+                display: flex;
+                flex-direction: column;
+                .yellowTicketE{
+                  padding: 5px 10px;
+                  @include yellowTicket;
+                }
+              }
+            }
+            input {
+              font-family: $manrope;
+              padding-left: 5px;
+              height: 30px;
+              width: 100%;
+              margin-bottom: 10px;
+              border-radius: 2px;
+              border: 1px solid rgb(185, 185, 185);
+            }
+            .input:focus {
+              border: 1px solid rgb(185, 185, 185);
+            }
+          }
+        }
+        .selectedTags{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          margin-top: 20px;
+          margin-bottom: 30px;
+          padding-right: 10px;
+          gap: 10px;
+          .selectedIngredientsTags {
+            display: flex;
+            gap: 10px;
+            .yellowTicketG{
+              padding: 10px 15px;
+              border-radius: 10px;
+              @include yellowTicket;
+            }
+          }
+          .selectedUstensilsTags {
+            display: flex;
+            gap: 10px;
+            .yellowTicketG{
+              padding: 10px 15px;
+              border-radius: 10px;
+              @include yellowTicket;
+            }
+          }
+          .selectedApplianceTags {
+            display: flex;
+            gap: 10px;
+            .yellowTicketG{
+              padding: 10px 15px;
+              border-radius: 10px;
+              @include yellowTicket;
+            }
+          }
+        }
+    }
+    .total{
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 20px;
+      .totalRecipes{
+        font-family: $anton;
+        font-weight: 400;
+        font-size: 21px;
+      }
+    }
+  }
+
+  .whiteTicket {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .listIngredientsTags {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .listApplianceTags {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .listUstensilsTags {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .resultRecipes{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      row-gap: 40px;
+      justify-content: space-evenly;
+  }
+}
+

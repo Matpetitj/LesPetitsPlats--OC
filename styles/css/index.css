@@ -1,0 +1,471 @@
+* {
+  font-family: "Manrope", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  max-width: 1440px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1, h2, h3, h4, p {
+  margin: 0px;
+}
+
+.card {
+  display: block;
+  width: 30%;
+  height: 730px;
+  background-color: #FFFFFF;
+  border-radius: 21px;
+}
+.card__recipeHeader {
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 21px 21px 0 0;
+}
+.card__recipeHeader__duration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 21px 22px 0 0;
+  width: 33px;
+  height: 16px;
+  padding: 5px 15px 5px 15px;
+  border-radius: 14px;
+  font-weight: 400;
+  font-size: 12px;
+  background-color: #FFD15B;
+  color: #1B1B1B;
+}
+.card__recipeHeader__img {
+  width: 100%;
+  height: 250px;
+  border-radius: 21px 21px 0 0;
+  object-fit: cover;
+}
+.card__infoContainer {
+  padding: 30px 25px 0 25px;
+}
+.card__infoContainer__recipeTitle {
+  height: 27px;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.descriptionBlock__title {
+  color: #7A7A7A;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+.descriptionBlock__recipeDescription {
+  color: #1B1B1B;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  max-height: 115px;
+  overflow: auto;
+}
+
+.ingredientsBlock {
+  margin-top: 32px;
+}
+.ingredientsBlock__title {
+  color: #7A7A7A;
+  font-family: "Manrope", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+.ingredientsBlock__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 21px 30px;
+}
+
+.ingredientName {
+  color: #1B1B1B;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.ingredientQuantity {
+  color: #7A7A7A;
+  font-family: "Manrope";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.dropdownList {
+  display: none;
+}
+
+header {
+  width: 100%;
+  height: 670px;
+  position: relative;
+}
+header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+header .logo {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  height: 40px;
+}
+header .logo h1 {
+  color: white;
+  margin: 0;
+  font-family: "Anton", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+header .logo img {
+  height: auto;
+  width: auto;
+  object-fit: cover;
+}
+header .titleSearchContainer {
+  position: absolute;
+  width: 100%;
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+header .search {
+  position: relative;
+  width: 950px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+}
+header .globalSearch {
+  background-color: #FFFFFF;
+  width: 100%;
+  height: 72px;
+  z-index: 10;
+  padding-left: 25px;
+  border-radius: 10px;
+}
+header .loupe {
+  position: absolute;
+  background-color: #FFFFFF;
+  right: 20px;
+  top: 10px;
+  z-index: 10;
+}
+header .loupe i {
+  color: #FFFFFF;
+  font-size: 27px;
+  background-color: #1B1B1B;
+  border-radius: 10px;
+  padding: 10px;
+}
+header .title {
+  width: 100%;
+  font-family: "Anton", sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: #FFD15B;
+  text-align: center;
+}
+
+.main {
+  background-color: #EDEDED;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 5em;
+}
+.main .sectionTags {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 40px 0px 40px;
+}
+.main .sectionTags .tags .listTags {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.main .sectionTags .tags .listTags .tagsContainer {
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+}
+.main .sectionTags .tags .listTags .tagsContainer .tagsTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.main .sectionTags .tags .listTags .tagsContainer .tagsTitleContainer .tagsTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ingredientsTags {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ingredientsTags .selectedIngTags {
+  display: flex;
+  flex-direction: column;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ingredientsTags .selectedIngTags .yellowTicketE {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ingredientsTags .selectedIngTags .yellowTicketE div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ingredientsTags .selectedIngTags .yellowTicketE div i {
+  color: black;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ustensilsTags {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ustensilsTags .selectedUstTags {
+  display: flex;
+  flex-direction: column;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ustensilsTags .selectedUstTags .yellowTicketE {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ustensilsTags .selectedUstTags .yellowTicketE div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .listTags .tagsContainer .ustensilsTags .selectedUstTags .yellowTicketE div i {
+  color: black;
+}
+.main .sectionTags .tags .listTags .tagsContainer .applianceTags {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.main .sectionTags .tags .listTags .tagsContainer .applianceTags .selectedAppTags {
+  display: flex;
+  flex-direction: column;
+}
+.main .sectionTags .tags .listTags .tagsContainer .applianceTags .selectedAppTags .yellowTicketE {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .listTags .tagsContainer .applianceTags .selectedAppTags .yellowTicketE div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .listTags .tagsContainer .applianceTags .selectedAppTags .yellowTicketE div i {
+  color: black;
+}
+.main .sectionTags .tags .listTags .tagsContainer input {
+  font-family: "Manrope", sans-serif;
+  padding-left: 5px;
+  height: 30px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  border: 1px solid rgb(185, 185, 185);
+}
+.main .sectionTags .tags .listTags .tagsContainer .input:focus {
+  border: 1px solid rgb(185, 185, 185);
+}
+.main .sectionTags .tags .selectedTags {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-right: 10px;
+  gap: 10px;
+}
+.main .sectionTags .tags .selectedTags .selectedIngredientsTags {
+  display: flex;
+  gap: 10px;
+}
+.main .sectionTags .tags .selectedTags .selectedIngredientsTags .yellowTicketG {
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .selectedTags .selectedIngredientsTags .yellowTicketG div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .selectedTags .selectedIngredientsTags .yellowTicketG div i {
+  color: black;
+}
+.main .sectionTags .tags .selectedTags .selectedUstensilsTags {
+  display: flex;
+  gap: 10px;
+}
+.main .sectionTags .tags .selectedTags .selectedUstensilsTags .yellowTicketG {
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .selectedTags .selectedUstensilsTags .yellowTicketG div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .selectedTags .selectedUstensilsTags .yellowTicketG div i {
+  color: black;
+}
+.main .sectionTags .tags .selectedTags .selectedApplianceTags {
+  display: flex;
+  gap: 10px;
+}
+.main .sectionTags .tags .selectedTags .selectedApplianceTags .yellowTicketG {
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  background-color: #FFD15B;
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .sectionTags .tags .selectedTags .selectedApplianceTags .yellowTicketG div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.main .sectionTags .tags .selectedTags .selectedApplianceTags .yellowTicketG div i {
+  color: black;
+}
+.main .sectionTags .total {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 20px;
+}
+.main .sectionTags .total .totalRecipes {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+}
+.main .whiteTicket {
+  font-size: 14px;
+  font-weight: 400;
+}
+.main .listIngredientsTags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.main .listApplianceTags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.main .listUstensilsTags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.main .resultRecipes {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  justify-content: space-evenly;
+}
+
+/*# sourceMappingURL=index.css.map */
