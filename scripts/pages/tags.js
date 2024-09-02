@@ -59,6 +59,29 @@ function displayTags(listTagsDom, listTags){
         });
         listTagsDom.appendChild(div);
     });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const tagsContainers = document.querySelectorAll(".tagsContainer");
+      
+        tagsContainers.forEach((container) => {
+          const titleContainer = container.querySelector(".tagsTitleContainer");
+          const arrowIcon = titleContainer.querySelector(".arrowIcon");
+      
+          titleContainer.addEventListener("click", () => {
+            // Fermer toutes les autres listes
+            tagsContainers.forEach((otherContainer) => {
+              if (otherContainer !== container) {
+                otherContainer.classList.remove("open");
+                otherContainer.querySelector(".arrowIcon").classList.remove("rotate");
+              }
+            });
+      
+            // Ouvrir/Fermer la liste cliquée
+            container.classList.toggle("open");
+            arrowIcon.classList.toggle("rotate");
+          });
+        });
+      });
 }
 
 /* Partie de selected tags */
@@ -157,3 +180,5 @@ function displayInputTag(input, listTags){
 
     });
 }
+
+

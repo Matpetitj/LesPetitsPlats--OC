@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   font-family: "Manrope", sans-serif;
   margin: 0px;
@@ -160,7 +161,7 @@ header .logo img {
 header .titleSearchContainer {
   position: absolute;
   width: 100%;
-  top: 300px;
+  top: 250px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -186,7 +187,7 @@ header .loupe {
   position: absolute;
   background-color: #FFFFFF;
   right: 20px;
-  top: 10px;
+  top: 12px;
   z-index: 10;
 }
 header .loupe i {
@@ -224,6 +225,9 @@ header .title {
   flex-direction: row;
   gap: 100px;
 }
+.main .sectionTags .tags .listTags .tagsContainer:hover {
+  cursor: pointer;
+}
 .main .sectionTags .tags .listTags .tagsContainer {
   width: 180px;
   padding: 20px 20px 20px 20px;
@@ -234,7 +238,6 @@ header .title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
 }
 .main .sectionTags .tags .listTags .tagsContainer .tagsTitleContainer .tagsTitle {
   font-size: 16px;
@@ -466,6 +469,33 @@ header .title {
   flex-wrap: wrap;
   row-gap: 40px;
   justify-content: space-evenly;
+}
+
+/* Masquer les listes de tags par défaut */
+.ingredientsTagsList,
+.applianceTagsList,
+.ustensilsTagsList {
+  display: none;
+}
+
+/* Ajouter une classe pour afficher les listes de tags */
+.open .ingredientsTagsList,
+.open .applianceTagsList,
+.open .ustensilsTagsList {
+  display: block;
+}
+
+.inputUst, .inputApp, .inputIng {
+  margin-top: 10px;
+}
+
+/* Rotation du chevron */
+.arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
 /*# sourceMappingURL=index.css.map */

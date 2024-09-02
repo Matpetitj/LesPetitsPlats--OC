@@ -15,6 +15,9 @@
           display: flex;
           flex-direction: row;
           gap: 100px;
+          .tagsContainer:hover {
+            cursor: pointer;
+          }
           .tagsContainer {
             width: 180px;
             padding: 20px 20px 20px 20px;
@@ -24,7 +27,6 @@
               display: flex;
               align-items: center;
               justify-content: space-between;
-              margin-bottom: 10px;
               .tagsTitle {
                 font-size: 16px;
                 font-weight: 500;
@@ -170,5 +172,32 @@
       row-gap: 40px;
       justify-content: space-evenly;
   }
+}
+
+/* Masquer les listes de tags par défaut */
+.ingredientsTagsList,
+.applianceTagsList,
+.ustensilsTagsList {
+  display: none;
+}
+
+/* Ajouter une classe pour afficher les listes de tags */
+.open .ingredientsTagsList,
+.open .applianceTagsList,
+.open .ustensilsTagsList {
+  display: block;
+}
+
+.inputUst, .inputApp, .inputIng {
+  margin-top: 10px;
+}
+
+/* Rotation du chevron */
+.arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
