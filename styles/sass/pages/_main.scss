@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-bottom: 5em;
+    padding-bottom: 20em;
   .sectionTags{
       display: flex;
       flex-direction: row;
@@ -19,14 +19,23 @@
             cursor: pointer;
           }
           .tagsContainer {
-            width: 180px;
+            width: 200px;
             padding: 20px 20px 20px 20px;
-            background-color: $white;
+            // background-color: $white;
             border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            overflow: hidden;
             .tagsTitleContainer {
               display: flex;
               align-items: center;
               justify-content: space-between;
+              background-color: $white;
+              width: 180px;
+              padding: 20px 20px 20px 20px;
+              border-radius: 20px;
+              height: auto;
               .tagsTitle {
                 font-size: 16px;
                 font-weight: 500;
@@ -80,7 +89,6 @@
             }
             input {
               font-family: $manrope;
-              padding-left: 5px;
               height: 30px;
               width: 100%;
               margin-bottom: 10px;
@@ -175,17 +183,31 @@
 }
 
 /* Masquer les listes de tags par défaut */
-.ingredientsTagsList,
-.applianceTagsList,
-.ustensilsTagsList {
+.ingredientsTagsList {
   display: none;
+  background-color: $white;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
 }
 
-/* Ajouter une classe pour afficher les listes de tags */
-.open .ingredientsTagsList,
-.open .applianceTagsList,
-.open .ustensilsTagsList {
-  display: block;
+.applianceTagsList {
+  display: none;
+  background-color: $white;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
+}
+
+.ustensilsTagsList {
+  display: none;
+  background-color: $white;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
 }
 
 .inputUst, .inputApp, .inputIng {
@@ -199,5 +221,9 @@
 
 .rotate {
   transform: rotate(180deg);
+}
+
+.open {
+  display: block;
 }
 

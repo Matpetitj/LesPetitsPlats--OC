@@ -212,7 +212,7 @@ header .title {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-bottom: 5em;
+  padding-bottom: 20em;
 }
 .main .sectionTags {
   display: flex;
@@ -229,15 +229,23 @@ header .title {
   cursor: pointer;
 }
 .main .sectionTags .tags .listTags .tagsContainer {
-  width: 180px;
+  width: 200px;
   padding: 20px 20px 20px 20px;
-  background-color: #FFFFFF;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow: hidden;
 }
 .main .sectionTags .tags .listTags .tagsContainer .tagsTitleContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #FFFFFF;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
+  height: auto;
 }
 .main .sectionTags .tags .listTags .tagsContainer .tagsTitleContainer .tagsTitle {
   font-size: 16px;
@@ -339,7 +347,6 @@ header .title {
 }
 .main .sectionTags .tags .listTags .tagsContainer input {
   font-family: "Manrope", sans-serif;
-  padding-left: 5px;
   height: 30px;
   width: 100%;
   margin-bottom: 10px;
@@ -472,17 +479,31 @@ header .title {
 }
 
 /* Masquer les listes de tags par défaut */
-.ingredientsTagsList,
-.applianceTagsList,
-.ustensilsTagsList {
+.ingredientsTagsList {
   display: none;
+  background-color: #FFFFFF;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
 }
 
-/* Ajouter une classe pour afficher les listes de tags */
-.open .ingredientsTagsList,
-.open .applianceTagsList,
-.open .ustensilsTagsList {
-  display: block;
+.applianceTagsList {
+  display: none;
+  background-color: #FFFFFF;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
+}
+
+.ustensilsTagsList {
+  display: none;
+  background-color: #FFFFFF;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 0px 0px 20px 20px;
+  margin-top: -15px;
 }
 
 .inputUst, .inputApp, .inputIng {
@@ -496,6 +517,10 @@ header .title {
 
 .rotate {
   transform: rotate(180deg);
+}
+
+.open {
+  display: block;
 }
 
 /*# sourceMappingURL=index.css.map */
