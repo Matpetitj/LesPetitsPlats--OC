@@ -352,6 +352,7 @@ header .title {
   margin-bottom: 10px;
   border-radius: 2px;
   border: 1px solid rgb(185, 185, 185);
+  padding-left: 5px;
 }
 .main .sectionTags .tags .listTags .tagsContainer .input:focus {
   border: 1px solid rgb(185, 185, 185);

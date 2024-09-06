@@ -21,7 +21,6 @@
           .tagsContainer {
             width: 200px;
             padding: 20px 20px 20px 20px;
-            // background-color: $white;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -94,6 +93,7 @@
               margin-bottom: 10px;
               border-radius: 2px;
               border: 1px solid rgb(185, 185, 185);
+              padding-left: 5px;
             }
             .input:focus {
               border: 1px solid rgb(185, 185, 185);

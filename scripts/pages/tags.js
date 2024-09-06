@@ -74,89 +74,47 @@ function displayTags(listTagsDom, listTags){
     });
 
 }
-// function openTags(type){
-//     // document.querySelector(".ingredientsTagsList").style.display = "none";
-//     // document.querySelector(".applianceTagsList").style.display = "none";
-//     // document.querySelector(".ustensilsTagsList").style.display = "none";
-//     switch(type){
-//         case 'ing':
-//             // document.querySelector(".ingredientsTagsList").style.display = "block";
-//             document.querySelector(".ingredientsTagsList").classList.add("open");
-//         break;
-//         case 'app':
-//             // document.querySelector(".applianceTagsList").style.display = "block";
-//             document.querySelector(".applianceTagsList").classList.add("open");
-//         break;
-//         case 'ust':
-//             // document.querySelector(".ustensilsTagsList").style.display = "block";
-//             document.querySelector(".ustensilsTagsList").classList.add("open");
-//         break;
-//     }
-// }
-
-// function openTags(type) {
-//     // Sélectionner toutes les listes de tags
-//     const ingredientsList = document.querySelector(".ingredientsTagsList");
-//     const applianceList = document.querySelector(".applianceTagsList");
-//     const ustensilsList = document.querySelector(".ustensilsTagsList");
-
-//     // Sélectionner les flèches pour la rotation
-//     const ingredientsArrow = document.querySelector('.tagsTitleContainer[onclick*="ing"] .arrowIcon');
-//     const applianceArrow = document.querySelector('.tagsTitleContainer[onclick*="app"] .arrowIcon');
-//     const ustensilsArrow = document.querySelector('.tagsTitleContainer[onclick*="ust"] .arrowIcon');
-
-//     // Fermer toutes les listes et réinitialiser les flèches
-//     if (type !== 'ing') {
-//         ingredientsList.classList.remove("open");
-//         ingredientsArrow.classList.remove("rotate");
-//     }
-//     if (type !== 'app') {
-//         applianceList.classList.remove("open");
-//         applianceArrow.classList.remove("rotate");
-//     }
-//     if (type !== 'ust') {
-//         ustensilsList.classList.remove("open");
-//         ustensilsArrow.classList.remove("rotate");
-//     }
-
-//     // Ouvrir ou fermer la liste en fonction du type cliqué
-//     switch (type) {
-//         case 'ing':
-//             ingredientsList.classList.toggle("open");
-//             ingredientsArrow.classList.toggle("rotate");
-//             break;
-//         case 'app':
-//             applianceList.classList.toggle("open");
-//             applianceArrow.classList.toggle("rotate");
-//             break;
-//         case 'ust':
-//             ustensilsList.classList.toggle("open");
-//             ustensilsArrow.classList.toggle("rotate");
-//             break;
-//     }
-// }
 
 function openTags(type) {
-    // Sélectionner toutes les listes de tags et leurs flèches
-    const tagsData = {
-        'ing': { list: document.querySelector(".ingredientsTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="ing"] .arrowIcon') },
-        'app': { list: document.querySelector(".applianceTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="app"] .arrowIcon') },
-        'ust': { list: document.querySelector(".ustensilsTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="ust"] .arrowIcon') }
-    };
+    // Sélectionner toutes les listes de tags
+    const ingredientsList = document.querySelector(".ingredientsTagsList");
+    const applianceList = document.querySelector(".applianceTagsList");
+    const ustensilsList = document.querySelector(".ustensilsTagsList");
+
+    // Sélectionner les flèches pour la rotation
+    const ingredientsArrow = document.querySelector('.tagsTitleContainer[onclick*="ing"] .arrowIcon');
+    const applianceArrow = document.querySelector('.tagsTitleContainer[onclick*="app"] .arrowIcon');
+    const ustensilsArrow = document.querySelector('.tagsTitleContainer[onclick*="ust"] .arrowIcon');
 
     // Fermer toutes les listes et réinitialiser les flèches
-    Object.keys(tagsData).forEach(key => {
-        const { list, arrow } = tagsData[key];
-        if (key !== type) {
-            list.classList.remove("open");
-            arrow.classList.remove("rotate");
-        }
-    });
+    if (type !== 'ing') {
+        ingredientsList.classList.remove("open");
+        ingredientsArrow.classList.remove("rotate");
+    }
+    if (type !== 'app') {
+        applianceList.classList.remove("open");
+        applianceArrow.classList.remove("rotate");
+    }
+    if (type !== 'ust') {
+        ustensilsList.classList.remove("open");
+        ustensilsArrow.classList.remove("rotate");
+    }
 
-    // Ouvrir ou fermer la liste cliquée
-    const { list, arrow } = tagsData[type];
-    list.classList.toggle("open");
-    arrow.classList.toggle("rotate");
+    // Ouvrir ou fermer la liste en fonction du type cliqué
+    switch (type) {
+        case 'ing':
+            ingredientsList.classList.toggle("open");
+            ingredientsArrow.classList.toggle("rotate");
+            break;
+        case 'app':
+            applianceList.classList.toggle("open");
+            applianceArrow.classList.toggle("rotate");
+            break;
+        case 'ust':
+            ustensilsList.classList.toggle("open");
+            ustensilsArrow.classList.toggle("rotate");
+            break;
+    }
 }
 
 /* Partie de selected tags */
