@@ -33,6 +33,18 @@ function displayTags(listTagsDom, listTags){
 
     listTagsDom.innerHTML="";
     listTags.forEach(tag => {
+        let isAlreadySelected = false; 
+         // Ajouter l'element à la list selected 
+         if(listTagsDom.getAttribute("class").includes("Ingredients")){
+            isAlreadySelected = selectedIngredients.includes(tag);
+        }
+        if(listTagsDom.getAttribute("class").includes("Ustensils")){
+            isAlreadySelected =selectedUstensils.includes(tag);
+        }
+        if(listTagsDom.getAttribute("class").includes("Appliance")){
+            isAlreadySelected =selectedAppliance.includes(tag);
+        }
+        if(!isAlreadySelected){
         const div = document.createElement("div");
         //faire un style avec la list des tag (blanc)
         div.textContent= tag;
@@ -58,30 +70,93 @@ function displayTags(listTagsDom, listTags){
             init();
         });
         listTagsDom.appendChild(div);
+    }
     });
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const tagsContainers = document.querySelectorAll(".tagsContainer");
-      
-        tagsContainers.forEach((container) => {
-          const titleContainer = container.querySelector(".tagsTitleContainer");
-          const arrowIcon = titleContainer.querySelector(".arrowIcon");
-      
-          titleContainer.addEventListener("click", () => {
-            // Fermer toutes les autres listes
-            tagsContainers.forEach((otherContainer) => {
-              if (otherContainer !== container) {
-                otherContainer.classList.remove("open");
-                otherContainer.querySelector(".arrowIcon").classList.remove("rotate");
-              }
-            });
-      
-            // Ouvrir/Fermer la liste cliquée
-            container.classList.toggle("open");
-            arrowIcon.classList.toggle("rotate");
-          });
-        });
-      });
+}
+// function openTags(type){
+//     // document.querySelector(".ingredientsTagsList").style.display = "none";
+//     // document.querySelector(".applianceTagsList").style.display = "none";
+//     // document.querySelector(".ustensilsTagsList").style.display = "none";
+//     switch(type){
+//         case 'ing':
+//             // document.querySelector(".ingredientsTagsList").style.display = "block";
+//             document.querySelector(".ingredientsTagsList").classList.add("open");
+//         break;
+//         case 'app':
+//             // document.querySelector(".applianceTagsList").style.display = "block";
+//             document.querySelector(".applianceTagsList").classList.add("open");
+//         break;
+//         case 'ust':
+//             // document.querySelector(".ustensilsTagsList").style.display = "block";
+//             document.querySelector(".ustensilsTagsList").classList.add("open");
+//         break;
+//     }
+// }
+
+// function openTags(type) {
+//     // Sélectionner toutes les listes de tags
+//     const ingredientsList = document.querySelector(".ingredientsTagsList");
+//     const applianceList = document.querySelector(".applianceTagsList");
+//     const ustensilsList = document.querySelector(".ustensilsTagsList");
+
+//     // Sélectionner les flèches pour la rotation
+//     const ingredientsArrow = document.querySelector('.tagsTitleContainer[onclick*="ing"] .arrowIcon');
+//     const applianceArrow = document.querySelector('.tagsTitleContainer[onclick*="app"] .arrowIcon');
+//     const ustensilsArrow = document.querySelector('.tagsTitleContainer[onclick*="ust"] .arrowIcon');
+
+//     // Fermer toutes les listes et réinitialiser les flèches
+//     if (type !== 'ing') {
+//         ingredientsList.classList.remove("open");
+//         ingredientsArrow.classList.remove("rotate");
+//     }
+//     if (type !== 'app') {
+//         applianceList.classList.remove("open");
+//         applianceArrow.classList.remove("rotate");
+//     }
+//     if (type !== 'ust') {
+//         ustensilsList.classList.remove("open");
+//         ustensilsArrow.classList.remove("rotate");
+//     }
+
+//     // Ouvrir ou fermer la liste en fonction du type cliqué
+//     switch (type) {
+//         case 'ing':
+//             ingredientsList.classList.toggle("open");
+//             ingredientsArrow.classList.toggle("rotate");
+//             break;
+//         case 'app':
+//             applianceList.classList.toggle("open");
+//             applianceArrow.classList.toggle("rotate");
+//             break;
+//         case 'ust':
+//             ustensilsList.classList.toggle("open");
+//             ustensilsArrow.classList.toggle("rotate");
+//             break;
+//     }
+// }
+
+function openTags(type) {
+    // Sélectionner toutes les listes de tags et leurs flèches
+    const tagsData = {
+        'ing': { list: document.querySelector(".ingredientsTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="ing"] .arrowIcon') },
+        'app': { list: document.querySelector(".applianceTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="app"] .arrowIcon') },
+        'ust': { list: document.querySelector(".ustensilsTagsList"), arrow: document.querySelector('.tagsTitleContainer[onclick*="ust"] .arrowIcon') }
+    };
+
+    // Fermer toutes les listes et réinitialiser les flèches
+    Object.keys(tagsData).forEach(key => {
+        const { list, arrow } = tagsData[key];
+        if (key !== type) {
+            list.classList.remove("open");
+            arrow.classList.remove("rotate");
+        }
+    });
+
+    // Ouvrir ou fermer la liste cliquée
+    const { list, arrow } = tagsData[type];
+    list.classList.toggle("open");
+    arrow.classList.toggle("rotate");
 }
 
 /* Partie de selected tags */
