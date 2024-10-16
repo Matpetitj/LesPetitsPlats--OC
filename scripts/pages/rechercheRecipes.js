@@ -1,78 +1,26 @@
-// function simpleSearch(stringStr, listRecipes){
-    
-//   const lowerCaseInput = stringStr.toLowerCase().trim();
-
-//   // Filtrer les recettes qui correspondent à la requête
-//   const result = listRecipes.filter(
-//     (recipe) =>
-//       // Vérifier si le nom de la recette correspond
-//       recipe.name.toLowerCase().includes(lowerCaseInput) ||
-//       recipe.description.toLowerCase().includes(lowerCaseInput) ||
-//       recipe.ingredients.some((ingredient) =>
-//         ingredient.ingredient.toLowerCase().includes(lowerCaseInput)
-//       )
-//   );
-
-//   return result;
-
-// }
-
 function simpleSearch(stringStr, listRecipes) {
-  const lowerCaseInput = stringStr.toLowerCase().trim();
-  const result = [];
-
-  // Boucle for pour parcourir les recettes
-  for (let i = 0; i < listRecipes.length; i++) {
-    const recipe = listRecipes[i];
-    let matchFound = false;
-
-    // Vérifier si le nom ou la description de la recette correspond
-    if (recipe.name.toLowerCase().includes(lowerCaseInput) ||
-        recipe.description.toLowerCase().includes(lowerCaseInput)) {
-      matchFound = true;
-    } else {
-      // Boucle for pour vérifier les ingrédients
-      for (let j = 0; j < recipe.ingredients.length; j++) {
-        const ingredient = recipe.ingredients[j].ingredient;
-        if (ingredient.toLowerCase().includes(lowerCaseInput)) {
-          matchFound = true;
-          break; // Sortir de la boucle dès qu'un match est trouvé
+    const lowerCaseInput = stringStr.toLowerCase().trim();
+    const result = [];
+    // Boucle for pour parcourir les recettes
+    for (let i = 0; i < listRecipes.length; i++) {
+      // Vérifier si le nom ou la description de la recette correspond
+      if (listRecipes[i].name.toLowerCase().includes(lowerCaseInput) ||
+      listRecipes[i].description.toLowerCase().includes(lowerCaseInput) ||
+          someNative(lowerCaseInput, listRecipes[i].ingredients)) {
+            result.push(listRecipes[i]);
         }
-      }
     }
-
-    // Si un match est trouvé, ajouter la recette à la liste de résultats
-    if (matchFound) {
-      result.push(recipe);
-    }
+    return result;
   }
 
-  return result;
-}
-
-// function avancedSearch(listSelectedIng, listSelectedUst, listSelectedApp, listRecipes){
-
-//     let listRecipeTemp =listRecipes;
-//     //chercher la liste des recette disposant des ingredients suivants: 
-//     listSelectedIng.forEach(ingredient => {
-//         // verifer si cet ing existe dans les ing de la liste des recettes
-//         listRecipeTemp = searchByIng(ingredient, listRecipeTemp);
-//     });
-
-//     //chercher la liste des recette disposant des ustinsils suivants: 
-//     listSelectedUst.forEach(ustensil => {
-//         // verifer si cet ust existe dans les ust de la liste des recettes
-//         listRecipeTemp = searchByUst(ustensil, listRecipeTemp);
-//     });
-
-//     //chercher la liste des recette disposant des appliances suivants: 
-//     listSelectedApp.forEach(appliance => {
-//         // verifer si cet app existe dans les app de la liste des recettes
-//         listRecipeTemp = searchByAll(appliance, listRecipeTemp);
-//     });
-
-//     return listRecipeTemp;
-// }
+  function someNative(lowerCaseInput, ingredients){
+    for (let j = 0; j < ingredients.length; j++) {
+        if (ingredients[j].ingredient.toLowerCase().includes(lowerCaseInput)) {
+          return true;// Sortir de la boucle dès qu'un match est trouvé
+        }
+      }
+    return false; 
+  }
 
 function avancedSearch(listSelectedIng, listSelectedUst, listSelectedApp, listRecipes) {
 
@@ -101,40 +49,6 @@ function avancedSearch(listSelectedIng, listSelectedUst, listSelectedApp, listRe
 
   return listRecipeTemp;
 }
-
-// function searchByIng(stringStr, listRecipes) {
-//     const lowerCaseInput = stringStr.toLowerCase().trim();
-//     // Filtrer les recettes qui correspondent à la requête
-//     const result = listRecipes.filter((recipe) =>
-//       recipe.ingredients.some((ingredient) =>
-//         ingredient.ingredient.toLowerCase().includes(lowerCaseInput)
-//       )
-//     );
-  
-//     return result;
-//   }
-  
-//   function searchByAll(stringStr, listRecipes) {
-//     const lowerCaseInput = stringStr.toLowerCase().trim();
-//     // Filtrer les recettes qui correspondent à la requête
-//     const result = listRecipes.filter((recipe) =>
-//       recipe.appliance.toLowerCase().includes(lowerCaseInput)
-//     );
-  
-//     return result;
-//   }
-  
-//   function searchByUst(stringStr, listRecipes) {
-//     const lowerCaseInput = stringStr.toLowerCase().trim();
-//     // Filtrer les recettes qui correspondent à la requête
-//     const result = listRecipes.filter((recipe) =>
-//       recipe.ustensils.some((ustinsil) =>
-//         ustinsil.toLowerCase().includes(lowerCaseInput)
-//       )
-//     );
-  
-//     return result;
-//   }
 
 function searchByIng(stringStr, listRecipes) {
   const lowerCaseInput = stringStr.toLowerCase().trim();
