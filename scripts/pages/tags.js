@@ -1,9 +1,12 @@
-
 let listIngredients = new Set();
 let listUstensils = new Set();
 let listAppliance = new Set();
 
 function createAllTags(listRecipes){
+    listIngredients = new Set();
+    listUstensils = new Set();
+    listAppliance = new Set();
+
     listRecipes.forEach(recipe => {
         
         listAppliance.add(recipe.appliance.toLowerCase());
@@ -213,5 +216,3 @@ function displayInputTag(input, listTags){
 
     });
 }
-
-

@@ -12,11 +12,12 @@ globalSearch.addEventListener("input", function(e){
         
         // lancer la recherche simple 
         listRecipeFiltred= simpleSearch(this.value, listRecipeFiltred);
+    }
         // appeler la recherche avancé au cas ou il y a des tags selectionnés 
         listRecipeFiltred= avancedSearch(selectedIngredients,selectedUstensils,selectedAppliance,listRecipeFiltred);
         // raffraichir les données sur le som 
         init();
-    }
+    
 
 
 });
